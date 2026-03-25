@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'MinecraftEnchant';
+    src: url('../fonte/mc.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.titulo {
+    font-family: 'MinecraftEnchant';
+    color: #FFD700;
+    font-size: 36px;
+    text-shadow: 0 0 10px #FFD700;
+    margin-bottom: 30px;
+}
+
+.botoes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-gap: 15px;
+    justify-content: center;
+}
+
+button {
+    font-family: 'MinecraftEnchant';
+    font-size: 18px;
+    padding: 15px;
+    background-color: #0a0a0a;
+    color: #FFD700;
+    border: 1px solid #333;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background-color: #111;
+    color: #fff;
+}

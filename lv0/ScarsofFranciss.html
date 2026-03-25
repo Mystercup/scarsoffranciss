@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Tela de Senha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  
+    <audio id="musica" autoplay loop muted>
+        <source src="../music/Aylexmusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const musica = document.getElementById("musica");
+        musica.volume = 0.2;
+
+
+        window.addEventListener("load", () => {
+            musica.muted = false;
+            musica.play().catch(e => {
+                console.log("Autoplay bloqueado pelo navegador");
+            });
+        });
+    </script>
+
+    <!-- Crédito da música 
+    Música: Tension Rising - Aylex
+    Fonte: https://freetouse.com/music/aylex
+    -->
+
+   
+    <a href="void.html" class="botao-secreto"></a>
+
+   
+    <div class="container">
+        <p class="encantamento">NAO HA VERDADE ABSOLUTA</p>
+        <div class="linha">
+            <input type="password" id="senha" placeholder="Senha">
+            <button onclick="verificarSenha()">OK</button>
+        </div>
+    </div>
+
+    <p id="mensagem"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
