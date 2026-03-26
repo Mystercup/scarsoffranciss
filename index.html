@@ -2,47 +2,119 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Tela de Senha</title>
+    <title>Inicialização</title>
     <link rel="stylesheet" href="./lv0/style.css">
-</head>
-<body>
+    <style>
+        /* --- BLOQUEIO DE CÓPIA E SELEÇÃO --- */
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
-  
+        /* --- ESTILO DAS LETRAS FLUTUANTES (MANTIDO) --- */
+        .encantamento span {
+            display: inline-block;
+            animation: flutuar_leve 4s ease-in-out infinite alternate;
+            will-change: transform;
+        }
+
+        @keyframes flutuar_leve {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-4px); }
+        }
+
+        .espaco-letra {
+            width: 10px;
+        }
+
+        /* --- BOTÃO SECRETO --- */
+        .botao-secreto {
+            position: fixed;
+            top: 30px;    
+            right: 30px;  
+            width: 40px;   
+            height: 40px;
+            text-decoration: none;
+            background: transparent;
+            font-size: 24px; 
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0; 
+            color: transparent; 
+            transition: opacity 0.4s ease-in-out; 
+            cursor: default;
+        }
+
+        .botao-secreto:hover {
+            opacity: 1; 
+            cursor: pointer;
+            color: yellow; /* Adicionado para garantir visibilidade do emoji no hover */
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <a href="./lv0/void.html" class="botao-secreto">🙂</a>
+
     <audio id="musica" autoplay loop muted>
         <source src="./music/Aylexmusic.mp3" type="audio/mpeg">
     </audio>
 
-    <script>
-        const musica = document.getElementById("musica");
-        musica.volume = 0.2;
-
-
-        window.addEventListener("load", () => {
-            musica.muted = false;
-            musica.play().catch(e => {
-                console.log("Autoplay bloqueado pelo navegador");
-            });
-        });
-    </script>
-
-    <!-- Crédito da música 
-    Música: Tension Rising - Aylex
-    Fonte: https://freetouse.com/music/aylex
-    -->
-
-   
-    <a href="./lv0/void.html" class="botao-secreto"></a>
-
-   
     <div class="container">
-        <p class="encantamento">NAO HA VERDADE ABSOLUTA</p>
+        <p class="encantamento" id="texto-flutuante">NAO HA VERDADE ABSOLUTA</p>
+        
         <div class="linha">
             <input type="password" id="senha" placeholder="Senha">
-            <button onclick="verificarSenha()">OK</button>
+            <button onclick="verificarSenha()">Submit</button>
         </div>
     </div>
 
     <p id="mensagem"></p>
+
+    <script>
+        // --- BLOQUEIO DE ATALHOS (Ctrl+C, Ctrl+U, F12) ---
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key==='c' || e.key==='u' || e.key==='i' || e.key==='s')) e.preventDefault();
+            if (e.key === 'F12') e.preventDefault();
+        });
+
+        // --- 1. LÓGICA DAS LETRAS (MOVIMENTO INDIVIDUAL) ---
+        const containerTexto = document.getElementById("texto-flutuante");
+        const conteudoOriginal = containerTexto.innerText;
+        containerTexto.innerHTML = ""; 
+
+        conteudoOriginal.split("").forEach(letra => {
+            const span = document.createElement("span");
+            if (letra === " ") {
+                span.innerHTML = "&nbsp;"; 
+                span.className = "espaco-letra";
+            } else {
+                span.innerText = letra;
+                const delayAleatorio = (Math.random() * -8).toFixed(2); 
+                span.style.animationDelay = `${delayAleatorio}s`;
+                const duracaoAleatoria = (3 + Math.random() * 2).toFixed(2);
+                span.style.animationDuration = `${duracaoAleatoria}s`;
+            }
+            containerTexto.appendChild(span);
+        });
+
+        // --- 2. LÓGICA DA MÚSICA ---
+        const musica = document.getElementById("musica");
+        musica.volume = 0.2;
+
+        window.addEventListener("load", () => {
+            musica.muted = false;
+            musica.play().catch(e => console.log("Áudio bloqueado."));
+        });
+
+        document.addEventListener("click", () => {
+            if(musica.paused) musica.play();
+        }, { once: true });
+    </script>
 
     <script src="./lv0/script.js"></script>
 </body>

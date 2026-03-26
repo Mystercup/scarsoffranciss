@@ -2,42 +2,27 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Access Buttons</title>
+    <title>Nivel 1 de acesso</title>
     <link rel="stylesheet" href="stylelv1.css">
 </head>
-<body>
+<body oncontextmenu="return false;">
 
-
-    <audio id="musica" autoplay loop muted>
-        <source src="../music/Aylexmusic.mp3" type="audio/mpeg">
-    </audio>
-
-    <script>
-        const musica = document.getElementById("musica");
-        musica.volume = 0.2;
-
-
-        window.addEventListener("load", () => {
-            musica.muted = false;
-            musica.play().catch(e => {
-                console.log("Autoplay bloqueado pelo navegador");
-            });
-        });
-    </script>
-    
-        <!-- Crédito da música 
-    Música: Tension Rising - Aylex
-    Fonte: https://freetouse.com/music/aylex
-    -->
+    <audio id="musica" autoplay loop muted><source src="../music/Aylexmusic.mp3" type="audio/mpeg"></audio>
+    <audio id="som-risada"><source src="../music/laught.mp3" type="audio/mpeg"></audio>
 
     <div class="container">
+        <div id="feedback-tradutor">
+            <div id="contador" class="contador-runa"></div>
+            <div id="frase-sorteada" class="frase-runa"></div>
+        </div>
+
+        <div class="tradutor-topo" id="campo-tradutor"></div>
 
         <h1 class="titulo">Escolha um Nivel</h1>
-
+        
         <div class="botoes-container">
             <button onclick="abrirPagina('../lv2/Uniao.html', false)">Uniao</button>
-            <button onclick="abrirPagina('../lv/Astralyn.html', false)">Astralyn</button>
-
+            <button onclick="abrirPagina('../lv2_5/Astralyn.html', false)">Astralyn</button>
             <button onclick="abrirPagina('../lv/Inferno.html', true, 'senha3')">Inferno</button>
             <button onclick="abrirPagina('../lv/Caos_e_Razao.html', true, 'senha4')">Caos e Razao</button>
             <button onclick="abrirPagina('../lv/Aphatelia.html', true, 'senha5')">Aphatelia</button>
@@ -49,9 +34,99 @@
             <button onclick="abrirPagina('../lv/Dynamis.html', true, 'senha11')">Dynamis</button>
             <button onclick="abrirPagina('../lv/Acedia.html', true, 'senha12')">Acedia</button>
         </div>
+    </div>
 
+    <div id="modal-senha" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;">
+        <div style="background: #0a0a0a; border: 1px solid #333; padding: 40px; text-align: center; max-width: 450px;">
+            <p style="color: #ccc; font-size: 18px; margin-bottom: 25px; line-height: 1.6; font-family: 'FonteSecundaria', Arial, sans-serif;"><span style="color: #FFD700; font-weight: bold;">? -</span> O acesso exige um sacrificio de conhecimento.</p>
+            <input type="password" id="input-modal" style="background: #111; border: 1px solid #444; color: white; padding: 12px; width: 80%; margin-bottom: 25px; outline: none; text-align: center;">
+            <div style="display: flex; justify-content: center; gap: 15px;">
+                <button onclick="tocarRisada()" style="background: transparent; border: 1px solid #444; color: #777; width: 140px; height: 45px; cursor: pointer; font-family: 'FonteSecundaria', Arial, sans-serif;">Abandono</button>
+                <button onclick="confirmarSenha()" style="background: #222; border: 1px solid #FFD700; color: #FFD700; width: 140px; height: 45px; cursor: pointer; font-family: 'MinecraftEnchant', Arial, sans-serif;">Confirmar</button>
+            </div>
+        </div>
     </div>
 
     <script src="Scriptlv1.js"></script>
+    <script>
+        const alfabeto = "abcdefghijklmnopqrstuvwxyz".split("");
+        const segredo = "kuzonam";
+        let digitado = "";
+        
+        const frasesMisterio = ["O rei observa...", "A coroa esta vazia.", "As paredes sussurram.", "Fragmento de alma."];
+        const containerTradutor = document.getElementById("campo-tradutor");
+        const displayContador = document.getElementById("contador");
+        const displayFrase = document.getElementById("frase-sorteada");
+
+        // Gerador de teclado rúnico
+        alfabeto.forEach(letra => {
+            const btn = document.createElement("button");
+            btn.className = "btn-runa";
+            btn.innerText = letra;
+            btn.onclick = () => {
+                digitado += letra;
+                displayContador.innerText = `${digitado.length} / 7`;
+                displayFrase.innerText = frasesMisterio[Math.floor(Math.random() * frasesMisterio.length)];
+
+                if (digitado.length === 7) {
+                    if (digitado === segredo) {
+                        window.location.href = "rei.html";
+                    } else {
+                        gerarErroCaotico("patetico como nao me reconhece  ?");
+                        digitado = "";
+                        setTimeout(() => {
+                            displayContador.innerText = "";
+                            displayFrase.innerText = "";
+                        }, 500);
+                    }
+                }
+            };
+            containerTradutor.appendChild(btn);
+        });
+
+        function gerarErroCaotico(texto) {
+            const containerErro = document.createElement("div");
+            containerErro.className = "erro-container-aleatorio";
+            
+            // Cria cada letra de forma independente
+            texto.split("").forEach(letra => {
+                const span = document.createElement("span");
+                span.innerHTML = letra === " " ? "&nbsp;" : letra;
+                // Varia o tempo da animação para cada letra
+                span.style.animationDuration = (0.05 + Math.random() * 0.1) + "s";
+                containerErro.appendChild(span);
+            });
+
+            const x = Math.random() * (window.innerWidth - 450);
+            const y = Math.random() * (window.innerHeight - 50);
+            
+            containerErro.style.left = x + "px";
+            containerErro.style.top = y + "px";
+            
+            document.body.appendChild(containerErro);
+            setTimeout(() => containerErro.remove(), 2500);
+        }
+
+        // Configurações Globais
+        const musica = document.getElementById("musica");
+        const risada = document.getElementById("som-risada");
+        musica.volume = 0.2; risada.volume = 0.6;
+        
+        window.addEventListener("load", () => { 
+            musica.muted = false; 
+            musica.play().catch(e => {}); 
+        });
+
+        function tocarRisada() {
+            risada.currentTime = 0; 
+            risada.play();
+            setTimeout(() => { document.getElementById('modal-senha').style.display = 'none'; }, 500); 
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && ['c', 'u', 'i', 's'].includes(e.key)) e.preventDefault();
+            if (e.key === 'F12') e.preventDefault();
+        });
+    </script>
 </body>
 </html>

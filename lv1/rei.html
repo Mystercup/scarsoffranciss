@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>...</title>
+    <style>
+        @font-face { font-family: 'MinecraftEnchant'; src: url('../fonte/mc.ttf') format('truetype'); }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            overflow: hidden;
+            background: radial-gradient(circle, #4d3d00 0%, #000 20%);
+            background-color: black;
+            -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+        }
+
+        /* TELA DE ERRO AGORA EM VERMELHO */
+        #bsod {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-color: #8b0000; 
+            color: white;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 10%;
+            z-index: 9999;
+        }
+
+        #bsod h1 { font-size: 120px; margin: 0; }
+        #bsod p { font-size: 24px; line-height: 1.5; max-width: 800px; }
+
+        #noise-layer {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4uKfAAAAElBMVEX///8AAAAAAAAAAAAAAAAAAACvjW97AAAAAXRSTlMAQObYZgAAACNJREFUeNpjYGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZAAaAAAfAAAAAA==');
+            background-size: 50px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 10;
+            transition: opacity 0.05s;
+        }
+
+        .noise-ativo {
+            opacity: 0.15 !important;
+            animation: move-noise 0.2s steps(2) infinite;
+        }
+
+        @keyframes move-noise {
+            0% { background-position: 0 0; }
+            100% { background-position: 10px 10px; }
+        }
+
+        .rei-container {
+            position: absolute;
+            top: 50%; left: 55%; transform: translate(-50%, -32%);
+            height: 120vh; width: auto; z-index: 2;
+        }
+
+        .imagem-rei {
+            height: 100%; width:auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.2));
+        }
+
+        .glitch-estouro {
+            animation: estouro-anim 0.15s steps(2) infinite;
+        }
+
+        @keyframes estouro-anim {
+            0%, 100% { filter: saturate(100%) brightness(100%) hue-rotate(0deg); }
+            20% { filter: saturate(1000%) brightness(300%) hue-rotate(90deg); }
+            80% { filter: saturate(2000%) brightness(50%) hue-rotate(270deg); }
+        }
+
+        .censura-faixa {
+            position: absolute; 
+            background-color: black; 
+            color: #ff0000;
+            font-family: Arial, sans-serif; 
+            font-weight: bold;
+            font-size: 16px;
+            display: flex; justify-content: center; align-items: center; 
+            letter-spacing: 4px;
+            width: 300px; height: 70px; 
+            z-index: 3; 
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            pointer-events: none;
+        }
+
+        .caixa-principal {
+            top: 17%; 
+            left: 35%; 
+            transform: translate(-50%, -50%);
+            animation: flutuar-principal 3s ease-in-out infinite;
+        }
+
+        @keyframes flutuar-principal {
+            0%, 100% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, -60%); }
+        }
+
+        .caixa-gerada {
+            animation: flutuar-gerada 3s ease-in-out infinite;
+        }
+
+        @keyframes flutuar-gerada {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        #chat-input-container {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            z-index: 100; display: flex; flex-direction: column; align-items: center;
+        }
+
+        #user-input {
+            background: rgba(0, 0, 0, 0.9); border: 1px solid #4d3d00;
+            color: #FFD700; padding: 12px 25px; width: 350px; outline: none;
+            font-family: Arial, sans-serif; text-align: center; border-radius: 5px;
+        }
+
+        .rei-msg-caotica {
+            position: fixed; z-index: 99; pointer-events: none;
+            white-space: nowrap; display: flex;
+        }
+
+        .rei-msg-caotica span {
+            display: inline-block; font-family: 'MinecraftEnchant', Arial;
+            font-size: 30px; color: #FFD700; text-shadow: 0 0 15px #B8860B;
+            animation: vibrar_rei 0.1s infinite alternate;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <audio id="bg-music" loop>
+        <source src="../music/yellow.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="bsod">
+        <h1>:(</h1>
+        <p>Ocorreu um problema e seu sistema precisa ser reiniciado.</p>
+        <p style="font-size: 18px; margin-top: 20px;">Código de parada: EU_CONSIGO_TE_VER<br>O que falhou: MAN-MlruwT6M7m-M9qo3qw</p>
+    </div>
+
+    <div id="noise-layer"></div>
+
+    <div class="rei-container">
+        <img src="../images/reideamarelo.png" alt="..." class="imagem-rei" id="img-rei">
+        <div class="censura-faixa caixa-principal">[DADOS CORROMPIDOS]</div>
+    </div>
+
+    <div id="chat-input-container">
+        <input type="text" id="user-input" placeholder="Escreva aqui..." autocomplete="off">
+    </div>
+
+    <script>
+        const input = document.getElementById('user-input');
+        const imgRei = document.getElementById('img-rei');
+        const noiseLayer = document.getElementById('noise-layer');
+        const chatContainer = document.getElementById('chat-input-container');
+        const bsod = document.getElementById('bsod');
+        const musica = document.getElementById('bg-music');
+
+        function playMusica() {
+            musica.volume = 0.15; 
+            musica.play().catch(() => {});
+        }
+
+        window.addEventListener('click', playMusica, { once: true });
+        window.addEventListener('keydown', playMusica, { once: true });
+
+        let totalCaixas = 0;
+        const LIMITE_CAIXAS = 70;
+
+        const gatilhos = {
+            "eu sei quem voce e": "Eu sou aquele que se esconde nas respostas",
+            "falacia": "Artificio da verdade",
+            "pragmatico": "Religiao",
+            "nathan": "Sombra quebrada porem interessante",
+            "fenrir": "Crianca que se recusa a aceitar seu destino"
+        };
+
+        const respostasAleatorias = ["VOCE E INSIGNIFICANTE", "NAO OUSE FALAR", "ESTA PERDIDO?", "SILENCIO"];
+
+        function iniciarCorrupcao() {
+            const loopCorrupcao = setInterval(() => {
+                if (totalCaixas >= LIMITE_CAIXAS) {
+                    clearInterval(loopCorrupcao);
+                    exibirBSOD();
+                    return;
+                }
+
+                const novaCaixa = document.createElement("div");
+                novaCaixa.className = "censura-faixa caixa-gerada";
+                novaCaixa.innerHTML = "[ERROR]";
+                
+                const rectChat = chatContainer.getBoundingClientRect();
+                const rectRei = imgRei.getBoundingClientRect();
+                let x, y, colidiu;
+
+                do {
+                    x = Math.random() * (window.innerWidth - 300);
+                    y = Math.random() * (window.innerHeight - 70);
+                    
+                    const colidiuChat = (x < rectChat.right && x + 300 > rectChat.left &&
+                                         y < rectChat.bottom && y + 70 > rectChat.top);
+                    
+                    const colidiuRei = (x < rectRei.right && x + 300 > rectRei.left &&
+                                        y < rectRei.bottom && y + 70 > rectRei.top);
+
+                    colidiu = colidiuChat || colidiuRei;
+                } while (colidiu);
+
+                novaCaixa.style.left = x + "px";
+                novaCaixa.style.top = y + "px";
+                novaCaixa.style.animationDuration = (2 + Math.random() * 2) + "s";
+                
+                document.body.appendChild(novaCaixa);
+                totalCaixas++;
+            }, 500); 
+        }
+
+        function exibirBSOD() {
+            musica.pause(); 
+            bsod.style.display = 'flex';
+            setTimeout(() => {
+                window.location.href = "../index.html";
+            }, 4000);
+        }
+
+        setTimeout(iniciarCorrupcao, 50000);
+
+        function triggerGlitch() {
+            imgRei.classList.add('glitch-estouro');
+            noiseLayer.classList.add('noise-ativo');
+            setTimeout(() => {
+                imgRei.classList.remove('glitch-estouro');
+                noiseLayer.classList.remove('noise-ativo');
+                setTimeout(triggerGlitch, Math.random() * 8000 + 4000);
+            }, Math.random() * 250 + 100);
+        }
+        setTimeout(triggerGlitch, 2500);
+
+        input.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && this.value.trim() !== "") {
+                const msgUser = this.value.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+                this.value = "";
+                imgRei.classList.add('glitch-estouro');
+                noiseLayer.classList.add('noise-ativo');
+                setTimeout(() => {
+                    imgRei.classList.remove('glitch-estouro');
+                    noiseLayer.classList.remove('noise-ativo');
+                }, 200);
+                setTimeout(() => {
+                    const respostaRei = gatilhos[msgUser] || respostasAleatorias[Math.floor(Math.random() * respostasAleatorias.length)];
+                    exibirMensagemRei(respostaRei);
+                }, 400);
+            }
+        });
+
+        function exibirMensagemRei(texto) {
+            const container = document.createElement("div");
+            container.className = "rei-msg-caotica";
+            texto.split("").forEach(letra => {
+                const span = document.createElement("span");
+                span.innerHTML = letra === " " ? "&nbsp;" : letra;
+                span.style.animationDuration = (0.05 + Math.random() * 0.1) + "s";
+                container.appendChild(span);
+            });
+            container.style.left = Math.random() * (window.innerWidth - 450) + "px";
+            container.style.top = Math.random() * (window.innerHeight - 150) + "px";
+            document.body.appendChild(container);
+            setTimeout(() => {
+                container.style.transition = "opacity 1s, filter 1s";
+                container.style.opacity = "0";
+                container.style.filter = "blur(10px)";
+                setTimeout(() => container.remove(), 1000);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

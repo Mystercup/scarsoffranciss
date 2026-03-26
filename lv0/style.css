@@ -3,6 +3,11 @@
     src: url('../fonte/mc.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'FonteBotao'; /* Nome que daremos para a tp.ttf */
+    src: url('../fonte/tp.ttf') format('truetype');
+}
+
 body {
     margin: 0;
     height: 100vh;
@@ -83,6 +88,17 @@ input:focus {
     font-size: 25px;
     letter-spacing: 10px;
     text-shadow: 0 0 10px #FFD700;
+}
+
+@keyframes pulsar {
+    0% { text-shadow: 0 0 10px #FFD700; }
+    50% { text-shadow: 0 0 20px #FFD700, 0 0 30px #B8860B; }
+    100% { text-shadow: 0 0 10px #FFD700; }
+}
+
+.encantamento {
+    /* ... seus outros estilos ... */
+    animation: pulsar 2s infinite ease-in-out;
 }
 
 .botao-secreto {
@@ -170,3 +186,4 @@ input:focus {
 .botao-voltar:hover {
     background-color: #111;
 }
+
