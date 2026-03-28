@@ -25,6 +25,7 @@ const gatilhos = {
     "matteo": "Aquele que carrega consigo o fardo de um corpo morto",
     "angelo": "Timido, deveria ter mais confianca em seus atos",
     "anora": "Uma rachadura que se conserta sozinha, dificil de quebrar permanentemente",
+    "Beatrice": "Uma coruja interessante, porem Nathan não a merece"
 };
 
 const respostasAleatorias = [

@@ -1,5 +1,5 @@
 let comboSenha = "";
-const SENHA_CORRETA = "0124234030434149";
+const SENHA_CORRETA = "1240234030434149";
 
 
 window.inputPainel = function(num) {
