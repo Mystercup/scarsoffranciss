@@ -9,6 +9,29 @@
             cursor: pointer;
         }
 
+        #btn-ajuda-discreto {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: #1a1a1a;
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            padding: 5px 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            cursor: pointer;
+            z-index: 2000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        #btn-ajuda-discreto:hover {
+            background: #FFD700;
+            color: black;
+            box-shadow: 0 0 10px #FFD700;
+        }
+
         #painel-numerico {
             position: fixed;
             right: 30px;
@@ -81,6 +104,8 @@
     </style>
 </head>
 <body> 
+    <button id="btn-ajuda-discreto" onclick="alert('talvez no link?')">SISTEMA: INFO</button>
+
     <div class="layout-wrapper">
         <div class="painel-botoes-laterais">
             <button class="btn-lateral" onclick="abrirPopup('../images/lv1/pop/1ag.png', true)">ANALISAR I</button>
