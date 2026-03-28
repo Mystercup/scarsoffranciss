@@ -5,91 +5,46 @@
     <title>União - ?</title>
     <link rel="stylesheet" href="stylelv2.css">
     <style>
-        .foto-aba img, #img-popup {
-            cursor: pointer;
-        }
-
-        
+        .foto-aba img, #img-popup { cursor: pointer; }
         #painel-numerico {
-            position: fixed;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 320px; 
+            position: fixed; right: 30px; top: 50%;
+            transform: translateY(-50%); width: 320px; 
             background: linear-gradient(145, #1a1a1a, #000);
-            border: 2px solid #FFD700;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 1000;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+            border: 2px solid #FFD700; padding: 25px;
+            display: flex; flex-direction: column; gap: 15px;
+            z-index: 1000; box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
             border-radius: 8px;
         }
-
         #display-senha {
-            width: 100%;
-            height: 70px;
-            background: #000;
-            border: 1px solid #4d3d00;
-            color: #FFD700;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Courier New', monospace;
-            font-size: 18px; 
-            letter-spacing: 2px;
-            text-align: center;
-            box-sizing: border-box;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            width: 100%; height: 70px; background: #000;
+            border: 1px solid #4d3d00; color: #FFD700;
+            display: flex; justify-content: center; align-items: center;
+            font-family: 'Courier New', monospace; font-size: 18px; 
+            letter-spacing: 2px; text-align: center;
+            box-sizing: border-box; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
-
-        .grade-teclado {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
+        .grade-teclado { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
         .btn-tecla {
-            padding: 18px;
-            background: #111;
-            border: 1px solid #4d3d00;
-            color: #FFD700;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-            font-size: 20px;
-            transition: all 0.2s;
+            padding: 18px; background: #111; border: 1px solid #4d3d00;
+            color: #FFD700; cursor: pointer; font-family: 'Courier New', monospace;
+            font-size: 20px; transition: all 0.2s;
         }
-
-        .btn-tecla:hover { 
-            background: #4d3d00; 
-            box-shadow: 0 0 10px #FFD700;
-        }
-
+        .btn-tecla:hover { background: #4d3d00; box-shadow: 0 0 10px #FFD700; }
         .btn-enter-teclado {
-            grid-column: span 3;
-            padding: 18px;
-            background: #4d3d00;
-            color: #FFD700;
-            border: 1px solid #FFD700;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 3px;
+            grid-column: span 3; padding: 18px; background: #4d3d00;
+            color: #FFD700; border: 1px solid #FFD700; cursor: pointer;
+            text-transform: uppercase; font-weight: bold; letter-spacing: 3px;
         }
-
         .btn-enter-teclado:hover { background: #FFD700; color: black; }
     </style>
 </head>
-<body oncontextmenu="return false;"> 
-    <div class="layout-wrapper">
+<body> <div class="layout-wrapper">
         <div class="painel-botoes-laterais">
             <button class="btn-lateral" onclick="abrirPopup('../images/lv1/pop/1ag.png', true)">ANALISAR I</button>
             <button class="btn-lateral" onclick="abrirPopup('../images/lv1/pop/2ag.png', true)">ANALISAR II</button>
             <button class="btn-lateral" onclick="abrirPopup('../images/lv1/pop/3ag.png', true)">ANALISAR III</button>
             <button class="btn-lateral" onclick="abrirPopup('../images/lv1/pop/4ag.png', true)">ANALISAR IV</button>
         </div>
-
         <div class="container-fotos">
             <div class="foto-aba" onclick="abrirPopup('../images/lv1/1l.png', false)"><img src="../images/lv1/1l.png"></div>
             <div class="foto-aba" onclick="abrirPopup('../images/lv1/2l.png', false)"><img src="../images/lv1/2l.png"></div>
@@ -138,17 +93,14 @@
         const modal = document.getElementById("modal-container");
         const imgPopup = document.getElementById("img-popup");
 
-        
         musica.volume = 0.1; 
         somClique.volume = 0.4;
 
-        
         document.addEventListener("click", () => { 
             if(musica.paused) musica.play(); 
         }, { once: true });
 
         function abrirPopup(caminhoImagem, tocarSom) {
-            
             if (tocarSom) { 
                 somClique.currentTime = 0; 
                 somClique.play(); 
@@ -162,57 +114,21 @@
             imgPopup.src = ""; 
         }
 
-        
         window.onclick = function(event) { 
             if (event.target == modal) fecharPopup(); 
         }
 
-        // SEGURANÇA E BLOQUEIOS
+        // BLOQUEIO INTELIGENTE: Permite botão direito APENAS em imagens
         document.addEventListener('contextmenu', function(e) {
-            if (e.target.tagName !== 'IMG') e.preventDefault();
+            if (e.target.tagName !== 'IMG') {
+                e.preventDefault();
+            }
         });
 
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && (e.key==='u' || e.key==='i' || e.key==='s')) e.preventDefault();
             if (e.key === 'F12') e.preventDefault();
         });
-    </script>
-
-    <script>
-        (function() {
-            const body = document.body;
-            const musica = document.getElementById('bg-music');
-
-            document.fonts.ready.then(() => {
-                body.classList.add('sistema-pronto');
-            });
-
-            setTimeout(() => {
-                if (!body.classList.contains('sistema-pronto')) {
-                    body.classList.add('sistema-pronto');
-                }
-            }, 2000);
-
-            const iniciarAudio = () => {
-                if (musica) {
-                    musica.volume = 0.3;
-                    musica.play().catch(() => {});
-                }
-                window.removeEventListener('click', iniciarAudio);
-                window.removeEventListener('mousemove', iniciarAudio);
-                window.removeEventListener('keydown', iniciarAudio);
-            };
-
-            window.addEventListener('click', iniciarAudio);
-            window.addEventListener('mousemove', iniciarAudio);
-            window.addEventListener('keydown', iniciarAudio);
-
-            document.addEventListener('keydown', (e) => {
-                if (e.keyCode === 123 || (e.ctrlKey && [67, 85, 83, 73].includes(e.keyCode))) {
-                    e.preventDefault();
-                }
-            });
-        })();
     </script>
 </body>
 </html>
