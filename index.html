@@ -29,7 +29,7 @@
             width: 10px;
         }
 
-        /* --- BOTÃO SECRETO --- */
+        
         .botao-secreto {
             position: fixed;
             top: 30px;    
@@ -76,13 +76,13 @@
     <p id="mensagem"></p>
 
     <script>
-        // --- BLOQUEIO DE ATALHOS (Ctrl+C, Ctrl+U, F12) ---
+        
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && (e.key==='c' || e.key==='u' || e.key==='i' || e.key==='s')) e.preventDefault();
             if (e.key === 'F12') e.preventDefault();
         });
 
-        // --- 1. LÓGICA DAS LETRAS (MOVIMENTO INDIVIDUAL) ---
+        
         const containerTexto = document.getElementById("texto-flutuante");
         const conteudoOriginal = containerTexto.innerText;
         containerTexto.innerHTML = ""; 
@@ -102,7 +102,7 @@
             containerTexto.appendChild(span);
         });
 
-        // --- 2. LÓGICA DA MÚSICA ---
+        
         const musica = document.getElementById("musica");
         musica.volume = 0.2;
 

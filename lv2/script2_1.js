@@ -21,7 +21,7 @@ const input = document.getElementById('input-terminal');
 const lista = document.getElementById('lista-logs');
 const box = document.getElementById('terminal-box');
 
-// FUNÇÃO PARA ADICIONAR LOGS
+
 function adicionarLog(texto, cor) {
     if (!lista || !box) return;
     const li = document.createElement('li');
@@ -31,7 +31,7 @@ function adicionarLog(texto, cor) {
     box.scrollTop = box.scrollHeight;
 }
 
-// --- SEQUÊNCIA DE INICIALIZAÇÃO (BOOT) ---
+
 async function iniciarSistema() {
     if (!input) return;
     
@@ -58,19 +58,19 @@ async function iniciarSistema() {
     input.focus();
 }
 
-// --- PROCESSAMENTO DE INPUT (SEM SENHA) ---
+
 input.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
         const val = this.value.toUpperCase().trim();
         this.value = "";
 
-        // Verifica apenas os comandos de texto
+        
         if (COMANDOS[val]) {
             adicionarLog(`>> ${val}`, "#FFD700");
             adicionarLog(`> ${COMANDOS[val]}`, "#FFD700");
         } 
         else {
-            // Qualquer outra coisa (inclusive a senha de 16 dígitos) dá erro aqui
+            
             adicionarLog(`>> ${val}`, "red");
             adicionarLog(`> ERRO: COMANDO NÃO RECONHECIDO NO TERMINAL.`, "red");
         }

@@ -25,7 +25,7 @@ body {
     user-select: none;
 }
 
-/* --- LOGICA DE PAGINAS --- */
+
 body.pagina-elidria, 
 body.pagina-elidria .texto-dourado {
     font-family: 'MinecraftEnchant', sans-serif;
@@ -38,7 +38,7 @@ body.pagina-astralyn .container-lateral {
     font-family: 'FontePadrao', sans-serif;
 }
 
-/* --- ESTILOS LATERAIS (ADICIONADO) --- */
+
 .container-lateral {
     position: absolute;
     top: 50%;
@@ -73,15 +73,15 @@ body.pagina-astralyn .container-lateral {
     padding-bottom: 5px;
 }
 
-/* Custom Scrollbar */
+
 .conteudo-scroll::-webkit-scrollbar { width: 4px; }
 .conteudo-scroll::-webkit-scrollbar-track { background: #000; }
 .conteudo-scroll::-webkit-scrollbar-thumb { background: #4d3d00; }
 
-/* --- ESTILOS DOS ELEMENTOS --- */
+
 .centralizador-total {
     text-align: center;
-    width: 40%; /* Reduzido para não colidir com as laterais */
+    width: 40%; 
     display: flex;
     flex-direction: column;
     align-items: center;

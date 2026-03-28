@@ -9,7 +9,7 @@
             cursor: pointer;
         }
 
-        /* --- PAINEL DOURADO --- */
+        
         #painel-numerico {
             position: fixed;
             right: 30px;
@@ -138,17 +138,17 @@
         const modal = document.getElementById("modal-container");
         const imgPopup = document.getElementById("img-popup");
 
-        // Configuração de volumes
+        
         musica.volume = 0.1; 
         somClique.volume = 0.4;
 
-        // Inicia música no primeiro clique na página
+        
         document.addEventListener("click", () => { 
             if(musica.paused) musica.play(); 
         }, { once: true });
 
         function abrirPopup(caminhoImagem, tocarSom) {
-            // Toca o som de clique se for solicitado (botões ANALISAR)
+            
             if (tocarSom) { 
                 somClique.currentTime = 0; 
                 somClique.play(); 
@@ -162,7 +162,7 @@
             imgPopup.src = ""; 
         }
 
-        // Fecha modal ao clicar fora da imagem
+        
         window.onclick = function(event) { 
             if (event.target == modal) fecharPopup(); 
         }

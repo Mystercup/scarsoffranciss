@@ -88,11 +88,11 @@
             const containerErro = document.createElement("div");
             containerErro.className = "erro-container-aleatorio";
             
-            // Cria cada letra de forma independente
+            
             texto.split("").forEach(letra => {
                 const span = document.createElement("span");
                 span.innerHTML = letra === " " ? "&nbsp;" : letra;
-                // Varia o tempo da animação para cada letra
+                
                 span.style.animationDuration = (0.05 + Math.random() * 0.1) + "s";
                 containerErro.appendChild(span);
             });
@@ -107,7 +107,7 @@
             setTimeout(() => containerErro.remove(), 2500);
         }
 
-        // Configurações Globais
+        
         const musica = document.getElementById("musica");
         const risada = document.getElementById("som-risada");
         musica.volume = 0.2; risada.volume = 0.6;

@@ -22,7 +22,7 @@ window.validarPainel = function() {
     const painel = document.getElementById("painel-numerico");
     
     if (comboSenha === SENHA_CORRETA) {
-        // Sucesso: Apenas feedback visual
+        
         display.style.color = "#FFD700";
         display.innerText = "ACESSO AO CMD GARANTIDO";
         
@@ -32,7 +32,7 @@ window.validarPainel = function() {
             window.location.href = "falsetruth.html"; 
         }, 1200);
     } else {
-        // Erro: Fica vermelho e limpa, mas SEM tremer e SEM som
+        
         display.style.color = "red";
         display.innerText = "CÓDIGO CORROMPIDO";
         
