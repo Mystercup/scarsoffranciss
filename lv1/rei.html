@@ -18,7 +18,7 @@
             -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
         }
 
-        /* TELA DE ERRO AGORA EM VERMELHO */
+        /* TELA DE ERRO VERMELHA */
         #bsod {
             position: fixed;
             top: 0; left: 0;
@@ -138,6 +138,11 @@
             font-size: 30px; color: #FFD700; text-shadow: 0 0 15px #B8860B;
             animation: vibrar_rei 0.1s infinite alternate;
         }
+        
+        @keyframes vibrar_rei {
+            from { transform: translate(0,0); }
+            to { transform: translate(2px, 2px); }
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -163,6 +168,8 @@
         <input type="text" id="user-input" placeholder="Escreva aqui..." autocomplete="off">
     </div>
 
+    <script src="reiscript.js"></script>
+
     <script>
         const input = document.getElementById('user-input');
         const imgRei = document.getElementById('img-rei');
@@ -181,16 +188,6 @@
 
         let totalCaixas = 0;
         const LIMITE_CAIXAS = 70;
-
-        const gatilhos = {
-            "eu sei quem voce e": "Eu sou aquele que se esconde nas respostas",
-            "falacia": "Artificio da verdade",
-            "pragmatico": "Religiao",
-            "nathan": "Sombra quebrada porem interessante",
-            "fenrir": "Crianca que se recusa a aceitar seu destino"
-        };
-
-        const respostasAleatorias = ["VOCE E INSIGNIFICANTE", "NAO OUSE FALAR", "ESTA PERDIDO?", "SILENCIO"];
 
         function iniciarCorrupcao() {
             const loopCorrupcao = setInterval(() => {
@@ -211,13 +208,8 @@
                 do {
                     x = Math.random() * (window.innerWidth - 300);
                     y = Math.random() * (window.innerHeight - 70);
-                    
-                    const colidiuChat = (x < rectChat.right && x + 300 > rectChat.left &&
-                                         y < rectChat.bottom && y + 70 > rectChat.top);
-                    
-                    const colidiuRei = (x < rectRei.right && x + 300 > rectRei.left &&
-                                        y < rectRei.bottom && y + 70 > rectRei.top);
-
+                    const colidiuChat = (x < rectChat.right && x + 300 > rectChat.left && y < rectChat.bottom && y + 70 > rectChat.top);
+                    const colidiuRei = (x < rectRei.right && x + 300 > rectRei.left && y < rectRei.bottom && y + 70 > rectRei.top);
                     colidiu = colidiuChat || colidiuRei;
                 } while (colidiu);
 
@@ -233,9 +225,7 @@
         function exibirBSOD() {
             musica.pause(); 
             bsod.style.display = 'flex';
-            setTimeout(() => {
-                window.location.href = "../index.html";
-            }, 4000);
+            setTimeout(() => { window.location.href = "../index.html"; }, 4000);
         }
 
         setTimeout(iniciarCorrupcao, 50000);
@@ -253,16 +243,18 @@
 
         input.addEventListener('keypress', function (e) {
             if (e.key === 'Enter' && this.value.trim() !== "") {
-                const msgUser = this.value.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+                const textoOriginal = this.value;
                 this.value = "";
                 imgRei.classList.add('glitch-estouro');
                 noiseLayer.classList.add('noise-ativo');
+                
                 setTimeout(() => {
                     imgRei.classList.remove('glitch-estouro');
                     noiseLayer.classList.remove('noise-ativo');
                 }, 200);
+
                 setTimeout(() => {
-                    const respostaRei = gatilhos[msgUser] || respostasAleatorias[Math.floor(Math.random() * respostasAleatorias.length)];
+                    const respostaRei = obterRespostaRei(textoOriginal);
                     exibirMensagemRei(respostaRei);
                 }, 400);
             }

@@ -1,0 +1,153 @@
+/* IMPORTAÇÃO DAS FONTES */
+@font-face {
+    font-family: 'MinecraftEnchant';
+    src: url('../fonte/mc.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'FontePadrao';
+    src: url('../fonte/tp.ttf') format('truetype');
+}
+
+/* Configurações Gerais */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* --- LOGICA DE PAGINAS --- */
+body.pagina-elidria, 
+body.pagina-elidria .texto-dourado {
+    font-family: 'MinecraftEnchant', sans-serif;
+}
+
+body.pagina-astralyn, 
+body.pagina-astralyn .texto-dourado,
+body.pagina-astralyn #input-senha,
+body.pagina-astralyn .container-lateral {
+    font-family: 'FontePadrao', sans-serif;
+}
+
+/* --- ESTILOS LATERAIS (ADICIONADO) --- */
+.container-lateral {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    height: 70vh;
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid #4d3d00;
+    padding: 15px;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.esquerdo { left: 30px; }
+.direito { right: 30px; }
+
+.conteudo-scroll {
+    height: 100%;
+    overflow-y: auto;
+    color: #FFD700;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: justify;
+    padding-right: 10px;
+}
+
+.conteudo-scroll h2 {
+    font-size: 18px;
+    text-align: center;
+    border-bottom: 1px solid #4d3d00;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+/* Custom Scrollbar */
+.conteudo-scroll::-webkit-scrollbar { width: 4px; }
+.conteudo-scroll::-webkit-scrollbar-track { background: #000; }
+.conteudo-scroll::-webkit-scrollbar-thumb { background: #4d3d00; }
+
+/* --- ESTILOS DOS ELEMENTOS --- */
+.centralizador-total {
+    text-align: center;
+    width: 40%; /* Reduzido para não colidir com as laterais */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.texto-dourado {
+    color: #FFD700;
+    font-size: 32px;
+    line-height: 1.5;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    white-space: pre-wrap;
+    margin-bottom: 10px;
+}
+
+.linha-separadora {
+    width: 100%;
+    max-width: 600px;
+    border: 0;
+    border-top: 1px solid #4d3d00;
+    margin: 20px 0;
+}
+
+#input-senha {
+    background: transparent;
+    border: 1px solid #4d3d00;
+    color: #FFD700;
+    font-size: 20px;
+    padding: 10px 25px;
+    text-align: center;
+    outline: none;
+    width: 280px;
+    transition: all 0.3s ease;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-box {
+    border: 1px solid #FFD700;
+    padding: 50px;
+    background: #000;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.15);
+}
+
+.popup-box p {
+    color: #FFD700;
+    font-size: 28px;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.popup-box .sub-text {
+    font-size: 14px;
+    margin-top: 20px;
+    opacity: 0.6;
+    letter-spacing: 4px;
+}

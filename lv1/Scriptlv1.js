@@ -36,7 +36,7 @@ let senhaNecessariaGlobal = "";
 let sequenciaDigitada = ""; // Armazena o que o usuário digita globalmente
 
 const DATABASE_NIVEIS = {
-    'senha3': 'Dante', 
+    'senha3': '3ntr0pi4', 
     'senha4': 'Heraclito',
     'senha5': 'a', 'senha6': 'a', 'senha7': 'a', 'senha8': 'a',
     'senha9': 'a', 'senha10':'a', 'senha11':'a', 'senha12':'a',
