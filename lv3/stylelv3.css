@@ -12,7 +12,7 @@ body {
     font-family: 'FontePadrao', 'Courier New', Courier, monospace;
 }
 
-/* Efeito de Scanline (Linhas de monitor antigo) */
+
 body::before {
     content: " ";
     position: fixed;
@@ -62,7 +62,7 @@ body::before {
     animation: vibrar 0.1s infinite;
 }
 
-/* Animações de Ambiente */
+
 @keyframes glitch-texto {
     0% { opacity: 0.6; }
     95% { opacity: 0.6; transform: skew(0deg); }
@@ -80,7 +80,7 @@ body::before {
     100% { transform: translate(0); }
 }
 
-/* Responsividade Básica */
+
 @media (max-width: 768px) {
     #timer { font-size: 32px; letter-spacing: 5px; }
     .caixa-contador { padding: 30px; width: 90%; }

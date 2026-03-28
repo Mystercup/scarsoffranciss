@@ -1,7 +1,3 @@
-/**
- * REISCRIPT.JS - Gatilhos e Respostas (VERSAO SEM ACENTOS)
- */
-
 const gatilhos = {
     "eu sei quem voce e": "Eu sou aquele que se esconde nas respostas",
     "falacia": "Artificio da verdade",
@@ -41,11 +37,11 @@ const respostasAleatorias = [
     "NAO GASTE MEU TEMPO"
 ];
 
-// Funcao global para ser chamada pelo HTML
+
 window.obterRespostaRei = function(entrada) {
-    // Normalizacao basica: minusculas, remove acentos e espacos extras
+
     const msgLimpa = entrada.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     
-    // Retorna a frase do gatilho ou uma resposta aleatoria se nao encontrar
+
     return gatilhos[msgLimpa] || respostasAleatorias[Math.floor(Math.random() * respostasAleatorias.length)];
 };
