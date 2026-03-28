@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA JCPM - STATUS CRÍTICO</title>
+    <style>
+        /* IMPORTAÇÃO DA FONTE MC.TTF */
+        @font-face {
+            font-family: 'MC';
+            src: url('../fonts/MC.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #FFD700;
+            font-family: 'MC', 'Courier New', monospace;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+
+        /* EFEITO DE FUNDO BUGADO */
+        .fundo-vhs {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%),
+                        repeating-linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 3px 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 850px;
+            height: 70vh;
+            padding: 30px;
+            border: 1px solid #4d3d00;
+            background: rgba(5, 5, 5, 0.95);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .error-container::-webkit-scrollbar { width: 5px; }
+        .error-container::-webkit-scrollbar-thumb { background: #4d3d00; }
+
+        .lista-erros {
+            list-style: none;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .critical { color: #ff3333; font-weight: bold; }
+        .warning { color: #FFD700; opacity: 0.6; }
+
+        .input-area {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #4d3d00;
+            padding-top: 20px;
+            margin-top: auto;
+        }
+
+        .prefixo { color: #FFD700; margin-right: 10px; white-space: nowrap; }
+
+        #input-terminal {
+            background: transparent;
+            border: none;
+            color: #FFD700;
+            font-family: 'MC', monospace;
+            font-size: 1.2rem;
+            width: 100%;
+            outline: none;
+            text-transform: uppercase;
+        }
+
+        /* ANIMAÇÃO DE ERRO */
+        .shake { animation: shake 0.3s ease-in-out; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+    </style>
+</head>
+<body onclick="document.getElementById('input-terminal').focus()">
+
+    <div class="fundo-vhs"></div>
+
+    <div class="error-container" id="terminal-box">
+        <ul class="lista-erros" id="lista-logs">
+            <li class="critical">[FALHA] NÚCLEO_MEMORIA_CORROMPIDO</li>
+            <li class="warning">[AVISO] ACESSO RESTRITO - JCPM RECIFE</li>
+            <li class="warning">> AGUARDANDO COMANDO OU SENHA...</li>
+        </ul>
+
+        <div class="input-area">
+            <span class="prefixo">ROOT@SYSTEM:~$</span>
+            <input type="text" id="input-terminal" autocomplete="off" autofocus>
+        </div>
+    </div>
+
+    <script src="script2_1.js"></script>
+
+</body>
+</html>
