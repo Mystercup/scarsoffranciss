@@ -1,4 +1,3 @@
-/* IMPORTAÇÃO DAS FONTES */
 @font-face {
     font-family: 'MinecraftEnchant';
     src: url('../fonte/mc.ttf') format('truetype');
@@ -9,7 +8,7 @@
     src: url('../fonte/tp.ttf') format('truetype');
 }
 
-/* Configurações Gerais */
+
 body {
     margin: 0;
     padding: 0;

@@ -103,5 +103,43 @@
             if (e.key === 'F12') e.preventDefault();
         });
     </script>
+
+    <script>
+        (function() {
+            const body = document.body;
+            const musica = document.getElementById('bg-music');
+
+            document.fonts.ready.then(() => {
+                body.classList.add('sistema-pronto');
+            });
+
+            setTimeout(() => {
+                if (!body.classList.contains('sistema-pronto')) {
+                    body.classList.add('sistema-pronto');
+                }
+            }, 2000);
+
+            const iniciarAudio = () => {
+                if (musica) {
+                    musica.volume = 0.3;
+                    musica.play().catch(() => {});
+                }
+                window.removeEventListener('click', iniciarAudio);
+                window.removeEventListener('mousemove', iniciarAudio);
+                window.removeEventListener('keydown', iniciarAudio);
+            };
+
+            window.addEventListener('click', iniciarAudio);
+            window.addEventListener('mousemove', iniciarAudio);
+            window.addEventListener('keydown', iniciarAudio);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.keyCode === 123 || (e.ctrlKey && [67, 85, 83, 73].includes(e.keyCode))) {
+                    e.preventDefault();
+                }
+            });
+        })();
+    </script>
+    
 </body>
 </html>

@@ -1,6 +1,9 @@
 @font-face { font-family: 'MinecraftEnchant'; src: url('../fonte/mc.ttf') format('truetype'); }
 @font-face { font-family: 'FonteSecundaria'; src: url('../fonte/tp.ttf') format('truetype'); }
 
+
+
+
 body {
     margin: 0; height: 100vh; background-color: black;
     font-family: Arial, sans-serif; color: white;

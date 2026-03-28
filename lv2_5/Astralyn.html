@@ -14,14 +14,20 @@
     <aside class="container-lateral esquerdo">
         <div class="conteudo-scroll">
             <h2>REGISTRO_01</h2>
-            <p>INSIRA SEU TEXTO LONGO AQUI. Este contêiner permite que você escreva parágrafos extensos sem quebrar o layout central.</p>
+            <p> Astralyn, capital de Elidria, essa cidade constumava 
+                ser vangloriada, agora, já não se vê mais nada para se vangloriar,
+                 o total de abitantes por mim é desconhecido
+                mas ao que se sabe da história joseph era também prefeito daqui,
+                 para aqueles que ainda acreditam que a capital é um local de recomeço,
+                  peço que reconsiderem suas escolhas de vida.
+            </p>
         </div>
     </aside>
 
     <aside class="container-lateral direito">
         <div class="conteudo-scroll">
             <h2>REGISTRO_02</h2>
-            <p>INSIRA O OUTRO TEXTO LONGO AQUI. Ideal para lore, diários ou pistas secundárias.</p>
+            <p>[ Mensagem Corrompida ]</p>
         </div>
     </aside>
 
@@ -59,5 +65,42 @@
         });
     </script>
 
+    <script>
+        (function() {
+            const body = document.body;
+            const musica = document.getElementById('bg-music');
+
+            document.fonts.ready.then(() => {
+                body.classList.add('sistema-pronto');
+            });
+
+            setTimeout(() => {
+                if (!body.classList.contains('sistema-pronto')) {
+                    body.classList.add('sistema-pronto');
+                }
+            }, 2000);
+
+            const iniciarAudio = () => {
+                if (musica) {
+                    musica.volume = 0.3;
+                    musica.play().catch(() => {});
+                }
+                window.removeEventListener('click', iniciarAudio);
+                window.removeEventListener('mousemove', iniciarAudio);
+                window.removeEventListener('keydown', iniciarAudio);
+            };
+
+            window.addEventListener('click', iniciarAudio);
+            window.addEventListener('mousemove', iniciarAudio);
+            window.addEventListener('keydown', iniciarAudio);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.keyCode === 123 || (e.ctrlKey && [67, 85, 83, 73].includes(e.keyCode))) {
+                    e.preventDefault();
+                }
+            });
+        })();
+    </script>
+    
 </body>
 </html>

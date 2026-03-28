@@ -1,9 +1,3 @@
-/* Stylelv3.css - Estética de Sistema Corrompido */
-
-@font-face {
-    font-family: 'FontePadrao';
-    src: url('../fonts/suafonte.ttf'); /* Ajuste o caminho se tiver uma fonte customizada */
-}
 
 body {
     background-color: #000;

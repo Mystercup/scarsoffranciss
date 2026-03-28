@@ -4,9 +4,11 @@
 }
 
 @font-face {
-    font-family: 'FonteBotao'; /* Nome que daremos para a tp.ttf */
+    font-family: 'FonteBotao'; 
     src: url('../fonte/tp.ttf') format('truetype');
 }
+
+
 
 body {
     margin: 0;

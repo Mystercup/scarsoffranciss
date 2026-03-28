@@ -1,6 +1,9 @@
 @font-face { font-family: 'MinecraftEnchant'; src: url('../fonte/mc.ttf') format('truetype'); }
 @font-face { font-family: 'FonteBotao'; src: url('../fonte/tp.ttf') format('truetype'); }
 
+
+
+
 body, html {
     margin: 0; padding: 0; width: 100%; height: 100%;
     background-color: black; color: #FFD700;
