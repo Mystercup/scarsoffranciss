@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qr</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-color: black;
+            user-select: none;
+        }
+
+        .evidencia {
+            position: absolute;
+            width: 180px;
+            height: auto;
+            cursor: grab;
+            filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.1));
+            z-index: 1;
+           
+            touch-action: none; 
+        }
+
+        .evidencia:active {
+            cursor: grabbing;
+        }
+
+        .evidencia img {
+            width: 100%;
+            display: block;
+            
+            pointer-events: none; 
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <div class="evidencia"><img src="../images/qr/cd1.png"></div>
+    <div class="evidencia"><img src="../images/qr/cd2.png"></div>
+    <div class="evidencia"><img src="../images/qr/cd3.png"></div>
+    <div class="evidencia"><img src="../images/qr/cd4.png"></div>
+    <div class="evidencia"><img src="../images/qr/cd5.png"></div>
+    <div class="evidencia"><img src="../images/qr/cd6.png"></div>
+    <div class="evidencia"><img src="../images/qr/cd7.png"></div>
+    <div class="evidencia"><img src="../images/qr/cd8.png"></div>
+    <div class="evidencia"><img src="../images/qr/cd9.png"></div>
+
+    <script>
+        let imagemAtiva = null;
+        let offset = { x: 0, y: 0 };
+
+        const evidencias = document.querySelectorAll('.evidencia');
+
+        
+        evidencias.forEach(el => {
+            const maxX = window.innerWidth - 200;
+            const maxY = window.innerHeight - 200;
+            el.style.left = Math.floor(Math.random() * maxX) + 'px';
+            el.style.top = Math.floor(Math.random() * maxY) + 'px';
+
+            
+            el.addEventListener('mousedown', (e) => {
+                if (e.button !== 0) return; 
+
+                imagemAtiva = el;
+                
+                
+                const rect = el.getBoundingClientRect();
+                offset.x = e.clientX - rect.left;
+                offset.y = e.clientY - rect.top;
+
+                
+                evidencias.forEach(img => img.style.zIndex = 1);
+                el.style.zIndex = 1000;
+            });
+        });
+
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!imagemAtiva) return;
+
+            
+            let x = e.clientX - offset.x;
+            let y = e.clientY - offset.y;
+
+            imagemAtiva.style.left = x + 'px';
+            imagemAtiva.style.top = y + 'px';
+        });
+
+        
+        document.addEventListener('mouseup', () => {
+            imagemAtiva = null;
+        });
+
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key==='u' || e.key==='i' || e.key==='s')) e.preventDefault();
+            if (e.key === 'F12') e.preventDefault();
+        });
+    </script>
+</body>
+</html>

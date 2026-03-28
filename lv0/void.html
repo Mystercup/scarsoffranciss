@@ -4,39 +4,47 @@
     <meta charset="UTF-8">
     <title>void</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <style>
+        body {
+            background-color: black;
+            color: #FFD700;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
 
-   
-    <audio id="musica" autoplay loop muted>
+        .void-texto {
+            pointer-events: none;
+        }
+
+        .invisible-text {
+            display: block;
+            color: black; /* Ou a cor que você definiu para esconder */
+            user-select: text;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            pointer-events: auto;
+            cursor: text;
+        }
+
+        .botao-voltar {
+            user-select: none;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <audio id="musica" loop>
         <source src="../music/Aylexmusic.mp3" type="audio/mpeg">
     </audio>
-
-    <script>
-        const musica = document.getElementById("musica");
-        musica.volume = 0.2;
-
-
-        window.addEventListener("load", () => {
-            musica.muted = false;
-            musica.play().catch(e => {
-                console.log("Autoplay bloqueado pelo navegador");
-            });
-        });
-    </script>
-    
-    <!-- Crédito da música 
-    Música: Tension Rising - Aylex
-    Fonte: https://freetouse.com/music/aylex
-    -->
-
    
     <div class="void-texto">
         “Os mortos nao retornam como corpos, mas como ecos memorias que se recusam a morrer, repetindo eternamente aquilo que nunca foi resolvido.” 
         <span class="invisible-text">e o meu mesmo vivo, ressoara eternamente em seu corpo Nathan</span>
     </div>
 
-  
     <div class="botao-voltar-container">
         <button class="botao-voltar" onclick="window.location.href='../index.html'">Acorde</button>
     </div>
@@ -45,9 +53,14 @@
         const musica = document.getElementById("musica");
         musica.volume = 0.2;
 
-        document.addEventListener("click", () => {
-            musica.play();
-        }, { once: true });
+        const iniciarAudio = () => {
+            musica.play().catch(() => {});
+            document.removeEventListener("click", iniciarAudio);
+            document.removeEventListener("keydown", iniciarAudio);
+        };
+
+        document.addEventListener("click", iniciarAudio);
+        document.addEventListener("keydown", iniciarAudio);
     </script>
 
 </body>

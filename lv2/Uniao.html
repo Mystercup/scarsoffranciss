@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <title>União - ?</title>
     <link rel="stylesheet" href="stylelv2.css">
+    <style>
+        /* Cursor pointer para indicar que a imagem é interativa */
+        .foto-aba img, #img-popup {
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body oncontextmenu="return false;">
-
-
-    <div class="layout-wrapper">
+<body> <div class="layout-wrapper">
         <div class="painel-botoes-laterais">
-            <button class="btn-lateral" onclick="abrirPopup('../images/analise1.png', true)">ANALISAR I</button>
-            <button class="btn-lateral" onclick="abrirPopup('../images/analise2.png', true)">ANALISAR II</button>
-            <button class="btn-lateral" onclick="abrirPopup('../images/analise3.png', true)">ANALISAR III</button>
-            <button class="btn-lateral" onclick="abrirPopup('../images/analise4.png', true)">ANALISAR IV</button>
+            <button class="btn-lateral" onclick="abrirPopup('../images/lv1/pop/1ag.png', true)">ANALISAR I</button>
+            <button class="btn-lateral" onclick="abrirPopup('../images/lv1/pop/2ag.png', true)">ANALISAR II</button>
+            <button class="btn-lateral" onclick="abrirPopup('../images/lv1/pop/3ag.png', true)">ANALISAR III</button>
+            <button class="btn-lateral" onclick="abrirPopup('../images/lv1/pop/4ag.png', true)">ANALISAR IV</button>
         </div>
 
-
         <div class="container-fotos">
-            <div class="foto-aba" onclick="abrirPopup('../images/1l.png', false)"><img src="../images/1l.png"></div>
-            <div class="foto-aba" onclick="abrirPopup('../images/2l.png', false)"><img src="../images/2l.png"></div>
-            <div class="foto-aba" onclick="abrirPopup('../images/3l.png', false)"><img src="../images/3l.png"></div>
-            <div class="foto-aba" onclick="abrirPopup('../images/foto4.jpg', false)"><img src="../images/foto4.jpg"></div>
+            <div class="foto-aba" onclick="abrirPopup('../images/lv1/1l.png', false)"><img src="../images/lv1/1l.png"></div>
+            <div class="foto-aba" onclick="abrirPopup('../images/lv1/2l.png', false)"><img src="../images/lv1/2l.png"></div>
+            <div class="foto-aba" onclick="abrirPopup('../images/lv1/3l.png', false)"><img src="../images/lv1/3l.png"></div>
+            <div class="foto-aba" onclick="abrirPopup('../images/lv1/4l.png', false)"><img src="../images/lv1/4l.png"></div>
         </div>
     </div>
 
@@ -33,7 +35,7 @@
     </div>
 
     <div class="texto-central">
-        <p>A união dos fragmentos revela o que o silêncio esconde.</p>
+        <p>Um local representado pela uniao... ou nem tanto, as 14 horas tudo pode ocorrer</p>
     </div>
 
     <button class="btn-voltar" onclick="window.location.href='../lv1/access_level_1.html'">voltar para sala de informações</button>
@@ -56,6 +58,17 @@
         }
         function fecharPopup() { modal.style.display = "none"; imgPopup.src = ""; }
         window.onclick = function(event) { if (event.target == modal) fecharPopup(); }
+
+        // --- LÓGICA DO MENU DE CONTEXTO ---
+        document.addEventListener('contextmenu', function(e) {
+            // Se o elemento clicado for uma imagem, permite o menu (download)
+            if (e.target.tagName === 'IMG') {
+                return true; 
+            } else {
+                // Caso contrário, bloqueia o botão direito no resto da página
+                e.preventDefault();
+            }
+        });
 
         // BLOQUEIO DE TECLADO
         document.addEventListener('keydown', function(e) {

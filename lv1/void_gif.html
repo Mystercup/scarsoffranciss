@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>:D</title>
     <style>
-        /* Registra a fonte mc.ttf */
         @font-face {
             font-family: 'MinecraftEnchant';
             src: url('../fonte/mc.ttf') format('truetype');
@@ -13,76 +12,68 @@
         body, html {
             margin: 0; padding: 0;
             width: 100%; height: 100%;
-            background-color: black; /* Fundo totalmente preto */
+            background-color: black;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #FFD700; /* Cor padrão para textos (dourado) */
+            color: #FFD700;
+            
+            /* BLOQUEIO DE SELEÇÃO GLOBAL */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
-        /* CONTAINER PARA O GIF COM CAMUFLAGEM */
         #gif-container {
             position: relative;
-            z-index: 1; /* Fica atrás das mensagens */
-            
-            /* Define o tamanho visível do GIF na tela. Ajuste aqui. */
+            z-index: 1;
             width: 70vw; 
             max-width: 900px;
             display: flex;
             justify-content: center;
             align-items: center;
-
-            /* --- O SEGREDO DA CAMUFLAGEM --- */
-            /* Cria uma máscara radial: o centro é visível (preto), 
-               as bordas ficam transparentes gradualmente. */
             -webkit-mask-image: radial-gradient(circle, black 40%, transparent 80%);
             mask-image: radial-gradient(circle, black 40%, transparent 80%);
-            
-            /* Garante que a máscara cubra todo o GIF */
             -webkit-mask-size: cover;
             mask-size: cover;
-            -webkit-mask-position: center;
-            mask-position: center;
+            pointer-events: none; /* Impede interação direta com o container do GIF */
         }
 
         #gif-container img {
             width: 100%;
             height: auto;
-            object-fit: contain; /* Mantém a proporção sem cortar */
-            
-            /* Ajuste opcional para escurecer um pouco o GIF e misturar melhor */
+            object-fit: contain;
             filter: brightness(0.7) contrast(1.2); 
-            opacity: 0.8; /* Deixa o GIF levemente transparente */
+            opacity: 0.8;
+            -webkit-user-drag: none; /* Impede arrastar a imagem */
         }
 
-        /* ANIMAÇÃO DE TREMOR PARA AS LETRAS */
         @keyframes tremorLetra {
             0%   { transform: translate(1px, 1px); }
             50%  { transform: translate(-1.1px, -1.1px); }
             100% { transform: translate(1px, -1px); }
         }
 
-        /* ESTILO PARA AS MENSAGENS CAÓTICAS */
         .mensagem-caotica {
             position: fixed;
             color: #FFD700;
             font-family: 'MinecraftEnchant', sans-serif;
             font-size: 26px;
-            /* Sombra dourada para brilhar levemente */
             text-shadow: 0 0 10px #FFD700; 
-            pointer-events: none; /* Não atrapalha o clique */
-            z-index: 100; /* Sempre na frente do GIF */
-            white-space: nowrap; /* Não quebra linha */
+            pointer-events: none;
+            z-index: 100;
+            white-space: nowrap;
         }
 
         .letra {
-            display: inline-block; /* Necessário para transform funcionar */
+            display: inline-block;
             animation: tremorLetra 0.1s infinite linear;
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
     <div id="gif-container">
         <img src="../images/iseeyou.gif" alt="Vazio">
@@ -93,16 +84,13 @@
     </audio>
 
     <script>
-        // Lógica da Música (Volume 0.1 = 10%)
         const musica = document.getElementById("musica-void");
         musica.volume = 0.1; 
 
-        // Toca a música no primeiro clique na página
         document.addEventListener("click", () => {
             musica.play();
         }, { once: true });
 
-        // Banco de Mensagens do Vazio
         const MENSAGENS = [
             "VOCE NAO DEVERIA ESTAR AQUI",
             "O VAZIO IRA CONSUMIR SUA MENTE",
@@ -121,29 +109,24 @@
             "DEUSES"
         ];
 
-        // Função para criar a mensagem com letras tremendo
         function criarMensagem() {
             const container = document.createElement("div");
             container.className = "mensagem-caotica";
             const texto = MENSAGENS[Math.floor(Math.random() * MENSAGENS.length)];
             
-            // Quebra o texto em letras e envolve cada uma em um span
             texto.split('').forEach(char => {
                 const span = document.createElement("span");
                 span.className = "letra";
                 span.innerHTML = char === " " ? "&nbsp;" : char;
-                // Adiciona um pequeno atraso aleatório na animação de cada letra
                 span.style.animationDelay = (Math.random() * 0.2) + "s";
                 container.appendChild(span);
             });
 
-            // Define posição aleatória na tela (evitando as bordas extremas)
             container.style.left = (Math.random() * 60 + 5) + "%";
             container.style.top = (Math.random() * 70 + 10) + "%";
 
             document.body.appendChild(container);
 
-            // Efeito de sumiço (fade-out) e remoção
             setTimeout(() => {
                 container.style.transition = "opacity 1.5s";
                 container.style.opacity = "0";
@@ -151,8 +134,10 @@
             }, 2500);
         }
 
-        // Gera mensagens a cada 1.5 segundos
         setInterval(criarMensagem, 1500);
+
+        // Impedir qualquer tentativa de arrastar elementos (evita o realce visual)
+        document.addEventListener('dragstart', (e) => e.preventDefault());
     </script>
 </body>
 </html>
