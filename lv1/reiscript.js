@@ -27,7 +27,7 @@ const gatilhos = {
     "anora": "Uma rachadura que se conserta sozinha, dificil de quebrar permanentemente",
     "beatrice": "Uma coruja interessante, porem Nathan não a merece",
     "rei de amarelo":"Este sou eu criança [ ERRO PR0F4N0 ]",
-    "slime":"O proprio caos engarafado",
+    "slime":"O proprio caos engarrafado",
     "sebastion":"Um cientista louco, grudento com aqueles que lhe divertem, gosta do caos",
     "husky":"Um ser divergente, lobo ou cachorro? isso nao importa, ele sabe quem e",
 };
