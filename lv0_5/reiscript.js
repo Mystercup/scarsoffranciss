@@ -62,7 +62,7 @@ const gatilhos = {
     "gabriel":"Uma piada, o que voce estava pensando nathan? deveria ter matado todos naquela sala quando teve oportunidade",
     "caça":"modo de viver para alguns",
     "scarlet":"Serva de vulcanus, suas intecoes sao ambiguas, por qual linha seguira?",
-    "Rakki":"Bastante barulhento, feliz a todo tempo"
+    "rakki":"Bastante barulhento, feliz a todo tempo"
 };
 
 const respostasAleatorias = [
