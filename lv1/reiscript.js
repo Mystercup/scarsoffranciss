@@ -5,7 +5,7 @@ const gatilhos = {
     "nathan": "Sombra quebrada, porem interessante",
     "fenrir": "Crianca que se recusa a aceitar seu destino",
     "kaelly": "Aquele que teve seu destino roubado",
-    "violet": "Enganacao e persistencia, porem uma mae mesmo sem sentimentos",
+    "violet": "Enganacao e persistencia, Uma mae e irma mesmo sem sentimentos reais",
     "connor": "Calado, discreto, porem demonstra afeto com aqueles que o importam, da sua propria forma",
     "galius": "Intrigante, pessoa de poucas palavras e poucas revelacoes",
     "chloe" : "Simpatica com todos, algum dia causara sua morte",
