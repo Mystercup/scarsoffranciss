@@ -30,6 +30,26 @@ const gatilhos = {
     "slime":"O proprio caos engarrafado",
     "sebastion":"Um cientista louco, grudento com aqueles que lhe divertem, gosta do caos",
     "husky":"Um ser divergente, lobo ou cachorro? isso nao importa, ele sabe quem e",
+    "kaiori":"Uma sombra que ainda reside no olhar de muitos",
+    "andrean":"Simpatico, alguem que gosta de conversar e ajudar os outros",
+    "lenora":"Sempre fechada, uma pessoa de poucas palavras, respeito isso",
+    "lucas":"Um rapaz bastante centrado de poucas palavras",
+    "astrid":"quebrada em diversos sentidos",
+    "dante":"Um corvo esperto, porem sentimental demais",
+    "icaros":"Guerreiro de muitas palavras, simpatico",
+    "dagon":"Guerreiro de poucas palavras, aparenta ja ter visto muito",
+    "rouge":"Bixa... o que isso significa? , intrigante...",
+    "nathaniel":"Bastante... safado, e assim que voces se diregem a ele correto?",
+    "mantega":"Precisa ser parada, trate de vingar seu filho Nathan",
+    "star":"Uma engrenagem quebrada, trate de vingar seu filho Nathan",
+    "haiko":"Um garoto amaldicoado, sua maldicao segue no mesmo caminho que ele",
+    "tsukasa":"quebrado, a beira do precipicio",
+    "dove":"enigmatico",
+    "gal":"auto tortura, precisa ser parado, seu destino e interessante demais para morrer assim",
+    "iris":"todos os caminhos dao em roma... entendo seu pensamento pequena coelho",
+    "smoke":"simpatico ate demais, deveria ser mais fechado, nem todos sao confiaveis",
+    "lilly":"Um crianca interessante, a diferenca de seres que compoem seu corpo e intrigante"
+
 };
 
 const respostasAleatorias = [
