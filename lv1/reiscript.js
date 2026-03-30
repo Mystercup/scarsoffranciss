@@ -56,7 +56,7 @@ const gatilhos = {
     "valerium":"Deus da magia, minha presenca e facilmente detectada por ele, deveria me preocupar com isso?",
     "vulcanus":"Deus do fogo, perverso, ainda pagara por seus pecados",
     "kitan":"gato esperto e extremamente simpatico com a casca, veio de outro local, interessante",
-    "cintia":"psicola timida, raramente dissociativa",
+    "cintia":"psicologa timida, raramente dissociativa",
     "yuta":"guerreiro quebrado, o tempo cobrou de sua mente até demais",
     "lucas franciss":"nunca foi um pai, apenas um ser triste, mas inteligente",
     "gabriel":"Uma piada, o que voce estava pensando nathan? deveria ter matado todos naquela sala quando teve oportunidade"
