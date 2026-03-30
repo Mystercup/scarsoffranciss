@@ -53,7 +53,7 @@ const gatilhos = {
     "verdantia":"Deusa da vida, nunca a vi, mas seu nome nao e estranho",
     "oblivium":"Deus da morte, alguém extremamente fechado",
     "luminara":"Deus da justica e da verdade, nunca a vi, mas seu nome nao e estranho",
-    "valerium":"Deus da magia, minha presenca e facilmente detectada por ele, deveria me preocupar com isso?",
+    "valerion":"Deus da magia, minha presenca e facilmente detectada por ele, deveria me preocupar com isso?",
     "vulcanus":"Deus do fogo, perverso, ainda pagara por seus pecados",
     "kitan":"gato esperto e extremamente simpatico com a casca, veio de outro local, interessante",
     "cintia":"psicologa timida, raramente dissociativa",
@@ -61,7 +61,7 @@ const gatilhos = {
     "lucas franciss":"nunca foi um pai, apenas um ser triste, mas inteligente",
     "gabriel":"Uma piada, o que voce estava pensando nathan? deveria ter matado todos naquela sala quando teve oportunidade",
     "caça":"modo de viver para alguns",
-    "scarlet":"Serva de vulcanus, suas intecoes sao ambiguas, por qual linha seguira?"
+    "scarlet":"Serva de vulcanus, suas intecoes sao ambiguas, por qual linha seguira?",
 };
 
 const respostasAleatorias = [
