@@ -59,7 +59,9 @@ const gatilhos = {
     "cintia":"psicologa timida, raramente dissociativa",
     "yuta":"guerreiro quebrado, o tempo cobrou de sua mente até demais",
     "lucas franciss":"nunca foi um pai, apenas um ser triste, mas inteligente",
-    "gabriel":"Uma piada, o que voce estava pensando nathan? deveria ter matado todos naquela sala quando teve oportunidade"
+    "gabriel":"Uma piada, o que voce estava pensando nathan? deveria ter matado todos naquela sala quando teve oportunidade",
+    "caça":"modo de viver para alguns",
+    "scarlet":"Serva de vulcanus, suas intecoes sao ambiguas, por qual linha seguira?"
 };
 
 const respostasAleatorias = [
