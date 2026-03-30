@@ -1,0 +1,71 @@
+@font-face { font-family: 'MinecraftEnchant'; src: url('../fonte/mc.ttf') format('truetype'); }
+@font-face { font-family: 'FonteSecundaria'; src: url('../fonte/tp.ttf') format('truetype'); }
+
+
+
+
+body {
+    margin: 0; height: 100vh; background-color: black;
+    font-family: Arial, sans-serif; color: white;
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; overflow: hidden;
+    -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+}
+
+/* CONTAINER DE FEEDBACK */
+#feedback-tradutor {
+    height: 80px; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; margin-bottom: 10px;
+}
+
+.contador-runa { 
+    color: #FFD700; font-family: 'MinecraftEnchant'; font-size: 22px; height: 25px; 
+}
+
+.frase-runa { 
+    color: #555; font-family: 'FonteSecundaria', Arial, sans-serif;
+    font-size: 16px; font-style: italic; margin-top: 5px; height: 20px; 
+}
+
+/* TECLADO TRADUTOR */
+.tradutor-topo { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 700px; margin-bottom: 30px; }
+
+.btn-runa {
+    font-family: 'MinecraftEnchant'; font-size: 24px; background: transparent;
+    color: #FFD700; border: 1px solid #222; width: 38px; height: 38px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+}
+.btn-runa:hover { border-color: #FFD700; background: rgba(255, 215, 0, 0.05); }
+
+/* TITULOS E BOTÕES */
+.titulo { font-family: 'MinecraftEnchant'; color: #FFD700; font-size: 36px; text-shadow: 0 0 10px #FFD700; margin-bottom: 30px; animation: pulsar 5s infinite ease-in-out; }
+
+@keyframes pulsar {
+    0% { text-shadow: 0 0 10px #FFD700; }
+    50% { text-shadow: 0 0 20px #FFD700, 0 0 30px #B8860B; }
+    100% { text-shadow: 0 0 10px #FFD700; }
+}
+
+.botoes-container { display: grid; grid-template-columns: repeat(3, 200px); grid-gap: 15px; justify-content: center; }
+.botoes-container button { font-family: 'MinecraftEnchant'; font-size: 18px; padding: 15px; background-color: #0a0a0a; color: #FFD700; border: 1px solid #333; cursor: pointer; border-radius: 3px; transition: all 0.2s; }
+.botoes-container button:hover { background-color: #111; color: #fff; border-color: #FFD700; }
+
+/* ESTILO DO ERRO (LETRAS INDEPENDENTES EM MC.TTF) */
+.erro-container-aleatorio {
+    position: fixed; z-index: 10000; pointer-events: none;
+    white-space: nowrap; display: flex;
+}
+
+.erro-container-aleatorio span {
+    display: inline-block;
+    font-family: 'MinecraftEnchant', Arial;
+    font-size: 24px;
+    color: #ff0000;
+    text-shadow: 0 0 10px red;
+    animation: tremer_letras 0.1s infinite alternate;
+}
+
+@keyframes tremer_letras {
+    from { transform: translate(0, 0); }
+    to { transform: translate(3px, -3px) rotate(3deg); }
+}

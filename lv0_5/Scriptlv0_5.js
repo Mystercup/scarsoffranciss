@@ -1,6 +1,3 @@
-// ============================================================
-// 1. CONFIGURAÇÃO VISUAL E ANIMAÇÕES
-// ============================================================
 const style = document.createElement('style');
 style.innerHTML = `
     @keyframes tremorLetra {
@@ -28,23 +25,25 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
-// ============================================================
-// 2. VARIÁVEIS GLOBAIS E EASTER EGG
-// ============================================================
+
 let paginaDestinoGlobal = "";
 let senhaNecessariaGlobal = "";
-let sequenciaDigitada = ""; // Armazena o que o usuário digita globalmente
+let sequenciaDigitada = ""; 
 
 const DATABASE_NIVEIS = {
     'senha3': '3ntr0pi4', 
-    'senha4': 'Heraclito',
-    'senha5': 'a', 'senha6': 'a', 'senha7': 'a', 'senha8': 'a',
-    'senha9': 'a', 'senha10':'a', 'senha11':'a', 'senha12':'a',
+    'senha4': 'a',
+    'senha5': 'a',
+    'senha6': 'a',
+    'senha7': 'a',
+    'senha8': 'a',
+    'senha9': 'a', 
+    'senha10':'a', 
+    'senha11':'a', 
+    'senha12':'a',
 };
 
-// ============================================================
-// 3. FUNÇÕES DE EXIBIÇÃO E LÓGICA
-// ============================================================
+
 
 function mostrarFalaCaotica(texto) {
     const containerFala = document.createElement("div");
@@ -97,31 +96,28 @@ function confirmarSenha() {
     }
 }
 
-// ============================================================
-// 4. EVENT LISTENERS (TECLADO GLOBAL)
-// ============================================================
+
 
 document.addEventListener("keydown", (e) => {
-    // 1. Lógica do Modal (Enter)
+
     const modal = document.getElementById("modal-senha");
     if (modal && modal.style.display === "flex" && e.key === "Enter") {
         confirmarSenha();
         return; 
     }
 
-    // 2. Lógica do Easter Egg "Eu sei"
-    // Ignora teclas de controle como Shift, Alt, etc.
+
     if (e.key.length === 1) { 
         sequenciaDigitada += e.key;
         
-        // Mantém apenas os últimos 6 caracteres (tamanho de "Eu sei")
+     
         if (sequenciaDigitada.length > 6) {
             sequenciaDigitada = sequenciaDigitada.substring(1);
         }
 
-        // Verifica se a frase foi digitada (case sensitive ou use .toLowerCase())
+        
         if (sequenciaDigitada.toLowerCase() === "eu sei") {
-            window.location.href = "void_gif.html"; // Ajuste o caminho da página do GIF
+            window.location.href = "void_gif.html"; 
         }
     }
 });
