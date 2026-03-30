@@ -25,10 +25,11 @@ const gatilhos = {
     "matteo": "Aquele que carrega consigo o fardo de um corpo morto",
     "angelo": "Timido, deveria ter mais confianca em seus atos",
     "anora": "Uma rachadura que se conserta sozinha, dificil de quebrar permanentemente",
-    "Beatrice": "Uma coruja interessante, porem Nathan não a merece",
-    "Rei de amarelo":"Este sou eu criança [ ERRO PR0F4N0 ]",
-    "Slime":"O proprio caos engarafado",
-    "Sebastion":"Um cientista louco, grudento com aqueles que lhe divertem, gosta do caos"
+    "beatrice": "Uma coruja interessante, porem Nathan não a merece",
+    "rei de amarelo":"Este sou eu criança [ ERRO PR0F4N0 ]",
+    "slime":"O proprio caos engarafado",
+    "sebastion":"Um cientista louco, grudento com aqueles que lhe divertem, gosta do caos",
+    "husky":"Um ser divergente, lobo ou cachorro? isso nao importa, ele sabe quem e",
 };
 
 const respostasAleatorias = [
