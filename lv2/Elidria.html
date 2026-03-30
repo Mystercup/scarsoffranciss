@@ -43,6 +43,11 @@
             font-size: 20px;
         }
     </style>
+    <script>
+        if (sessionStorage.getItem("acesso_elidria_autorizado") !== "true") {
+            window.location.replace("Astralyn.html");
+        }
+    </script>
 </head>
 <body class="pagina-elidria" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 

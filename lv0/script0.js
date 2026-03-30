@@ -12,6 +12,7 @@ function verificarSenha() {
         mensagem.textContent = "ACESSO PERMITIDO";
         mensagem.style.fontFamily = "'FonteBotao', sans-serif";
 
+        sessionStorage.setItem("acesso_lv1_autorizado", "true");
        
         setTimeout(() => {
             window.location.href = "./lv1/access_level_1.html";

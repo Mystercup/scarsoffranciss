@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>O Tempo Esgota</title>
     <link rel="stylesheet" href="stylelv3.css">
+    <script>
+        if (sessionStorage.getItem("autorizacao_hub_lv0_5") !== "true") {
+            window.location.replace("../lv0_5/access_level_0_5.html");
+        }
+    </script>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 

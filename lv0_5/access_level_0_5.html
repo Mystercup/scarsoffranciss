@@ -25,14 +25,14 @@
             <button onclick="abrirPagina('../lv2/Astralyn.html', false)">Astralyn</button>
             <button onclick="abrirPagina('../lv3/Caos.html', true, 'senha3')">Caos</button>
             <button onclick="abrirPagina('../lv4/Irracionalidade.html', true, 'senha4')">Aphatelia</button>
-            <button onclick="abrirPagina('../lv5/ataxia.html', true, 'senha5')">ataxia</button>
+            <button onclick="abrirPagina('../lv5/Ataxia.html', true, 'senha5')">ataxia</button>
             <button onclick="abrirPagina('../lv6/index.html', true, 'senha6')">apatheia</button>
             <button onclick="abrirPagina('../lv7/Ergon.html', true, 'senha7')">Ergon</button>
             <button onclick="abrirPagina('../lv8/index.html', true, 'senha8')">Telos</button>
             <button onclick="abrirPagina('../lv9/Eudaimonia.html', true, 'senha9')">Eudaimonia</button>
             <button onclick="abrirPagina('../lv10/Acedia.html', true, 'senha10')">Dynamis</button>
-            <button onclick="abrirPagina('../lv11/index.html', true, 'senha11')">Acedia</button>
-            <button onclick="abrirPagina('../lv12/index.html', true, 'senha12')">Katabasis</button>
+            <button onclick="abrirPagina('../lv11/Catabasis.html', true, 'senha11')">Acedia</button>
+            <button onclick="abrirPagina('../lv12/Enkrateia.html', true, 'senha12')">Katabasis</button>
         </div>
     </div>
 
@@ -70,6 +70,7 @@
 
                 if (digitado.length === 7) {
                     if (digitado === segredo) {
+                        sessionStorage.setItem("acesso_rei_autorizado", "true");
                         window.location.href = "rei.html";
                     } else {
                         gerarErroCaotico("patetico como nao me reconhece  ?");

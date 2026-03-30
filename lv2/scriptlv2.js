@@ -17,6 +17,8 @@ const validarSenha = () => {
                 this.style.borderColor = "#00ff00";
                 this.style.boxShadow = "0 0 20px #00ff00";
 
+                sessionStorage.setItem("acesso_elidria_autorizado", "true");
+
                 if (popupSucesso) {
                     popupSucesso.style.display = 'flex';
                 }
