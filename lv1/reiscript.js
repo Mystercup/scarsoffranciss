@@ -26,7 +26,9 @@ const gatilhos = {
     "angelo": "Timido, deveria ter mais confianca em seus atos",
     "anora": "Uma rachadura que se conserta sozinha, dificil de quebrar permanentemente",
     "Beatrice": "Uma coruja interessante, porem Nathan não a merece",
-    "Rei de amarelo":"Este sou eu criança [ ERRO PR0F4N0 ]"
+    "Rei de amarelo":"Este sou eu criança [ ERRO PR0F4N0 ]",
+    "Slime":"O proprio caos engarafado",
+    "Sebastion":"Um cientista louco, grudento com aqueles que lhe divertem, gosta do caos"
 };
 
 const respostasAleatorias = [
