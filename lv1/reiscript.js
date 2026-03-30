@@ -48,8 +48,18 @@ const gatilhos = {
     "gal":"auto tortura, precisa ser parado, seu destino e interessante demais para morrer assim",
     "iris":"todos os caminhos dao em roma... entendo seu pensamento pequena coelho",
     "smoke":"simpatico ate demais, deveria ser mais fechado, nem todos sao confiaveis",
-    "lilly":"Um crianca interessante, a diferenca de seres que compoem seu corpo e intrigante"
-
+    "lilly":"Um crianca interessante, a diferenca de seres que compoem seu corpo e intrigante",
+    "kai":"Utiliza magia de forma interessante, uma pessoa forte de poucas palavras",
+    "verdantia":"Deusa da vida, nunca a vi, mas seu nome nao e estranho",
+    "oblivium":"Deus da morte, alguém extremamente fechado",
+    "luminara":"Deus da justica e da verdade, nunca a vi, mas seu nome nao e estranho",
+    "valerium":"Deus da magia, minha presenca e facilmente detectada por ele, deveria me preocupar com isso?",
+    "vulcanus":"Deus do fogo, perverso, ainda pagara por seus pecados",
+    "kitan":"gato esperto e extremamente simpatico com a casca, veio de outro local, interessante",
+    "cintia":"psicola timida, raramente dissociativa",
+    "yuta":"guerreiro quebrado, o tempo cobrou de sua mente até demais",
+    "lucas franciss":"nunca foi um pai, apenas um ser triste, mas inteligente",
+    "gabriel":"Uma piada, o que voce estava pensando nathan? deveria ter matado todos naquela sala quando teve oportunidade"
 };
 
 const respostasAleatorias = [
