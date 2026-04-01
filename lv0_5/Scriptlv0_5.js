@@ -32,7 +32,7 @@ let sequenciaDigitada = "";
 
 const DATABASE_NIVEIS = {
     'senha3': '3ntr0pi4', 
-    'senha4': 'adsdsdsdsdggblkjfnaeghfb',
+    'senha4': 'Belico',
     'senha5': 'adsdsdsdsdggblkjfnaeghfb',
     'senha6': 'adsdsdsdsdggblkjfnaeghfb',
     'senha7': 'adsdsdsdsdggblkjfnaeghfb',

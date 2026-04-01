@@ -4,7 +4,7 @@ function iniciarContador() {
     const statusTxt = document.getElementById('status-txt');
 
     
-    const dataAlvo = new Date(2026, 2, 31, 15, 0, 0).getTime();
+    const dataAlvo = new Date(2026, 3, 2, 15, 0, 0).getTime();
 
     const intervalo = setInterval(() => {
         const agora = new Date().getTime();
