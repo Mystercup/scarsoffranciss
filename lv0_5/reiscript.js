@@ -8,7 +8,7 @@ const gatilhos = {
     "violet": "Enganacao e persistencia, Uma mae e irma mesmo sem sentimentos reais",
     "connor": "Calado, discreto, porem demonstra afeto com aqueles que o importam, da sua propria forma",
     "galius": "Intrigante, pessoa de poucas palavras e poucas revelacoes",
-    "chloe" : "Simpatica com todos, uma pessoa bastante doce, infelizmente, nao conseguem reconhecer sua forca",
+    "chloe" : "Simpatica com todos, uma pessoa bastante doce, infelizmente, por conta disso nao conseguem reconhecer sua forca",
     "riuh" : "Um guerreiro mesmo sendo uma crianca, infelizmente ditado como uma maquina de guerra, seu interior ja esta praticamente podre",
     "yue" : "Uma crianca doce e simpatica, possui dentro de si mais de uma alma",
     "eri" : "Uma crianca doce e simpatica, porem, preparada apesar de nao possuir dominio sobre seu chao",
