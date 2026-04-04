@@ -5,7 +5,6 @@
     <title>Irracionalidade</title>
     <link rel="stylesheet" href="stylelv4.css">
     <script>
-        // Bloqueio de acesso direto
         if (sessionStorage.getItem("autorizacao_hub_lv0_5") !== "true") {
             window.location.replace("../lv0_5/access_level_0_5.html");
         }
@@ -13,40 +12,44 @@
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 
-    <audio id="bg-music" loop>
-        <source src="../music/Aylexmusic.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="container-central">
-        <div class="input-wrapper">
-            <p class="instrucao">A voz da razão emudece aqui.</p>
-            <input type="text" id="input-puzzle" autocomplete="off" placeholder="...">
+        <div class="toca-fitas">
+            <div class="label-recorder">HIGH FIDELITY / REEL TO REEL</div>
+            <div class="cassette-visual">
+                <div class="reel" id="reel-1"></div>
+                <div class="reel" id="reel-2"></div>
+            </div>
+            <div class="controles-container">
+                <button id="btn-rev-tape" class="play-btn">REV</button>
+                <button id="btn-play-tape" class="play-btn">PLAY</button>
+                <button id="btn-2x-tape" class="play-btn">2X</button>
+            </div>
+            <div class="status-led" id="led"></div>
+            <audio id="tape-audio" src="../music/Sebastion.mp3" preload="auto" loop></audio>
+        </div>
+
+        <a href="../download/arquivos_extras.zip" download class="btn-download">DOWNLOAD DE ARQUIVOS EXTRAS</a>
+
+        <div class="caixa-transcricao">
+            <p>RELATÓRIO DE ROTINA - ENTRADA #001</p>
+            <p>Sebastion era um cientista, trabalhou junto de "Eveline" até enfim mata-la, não ficou exatamente claro o motivo, mas se for pra dar minha opnião?</p>
+            <p>Inveja</p>
+            <p>Apesar disso, Sebastion tinha salvação, ele me chamou pelo nome de Eveline como se ainda tivesse algo a ser resolvido com o nome em questão... aparentemente ele passou por muito, muito que ninguém, ou quase ninguém realmente quis ir atrás de saber</p>
+            <p>Considerei ele um amigo, mesmo que pra ele, eu não tenha conseguido demonstrar de uma forma evidente isso, eu tentei meu melhor para salva-lo</p>
+            <p>Infelizmente, meu melhor nunca realmente foi suficiente para nada em minha vida, encontrei esses relatos no castelo da minha irmã mais nova, estavam um pouco escondidos mas felizmente minha curiosidade conseguiu fareja-los </p>
+            <p>Espero que esteja em um local melhor Sebastion, a slime ainda tem muito o que resolver aqui neste lugar</p>
+            <p>[ Fim do relatório ]</p>
         </div>
     </div>
-
+    
+    <script src="Irracionalidade.js"></script>
+    
     <script>
-        const musica = document.getElementById('bg-music');
-        
-        const iniciarInteracao = () => {
-            if (musica) {
-                musica.volume = 0.3;
-                musica.play().catch(() => {});
-            }
-            window.removeEventListener('click', iniciarInteracao);
-            window.removeEventListener('keydown', iniciarInteracao);
-        };
 
-        window.addEventListener('click', iniciarInteracao);
-        window.addEventListener('keydown', iniciarInteracao);
+        // Sebastion, ele ainda vive dentro do escritorio, ainda respira atravez de páginas
+        // Devo deixar isso anotado caso eu esqueça da senha do arquivo...
 
-        document.addEventListener('keydown', (e) => {
-            // Bloquear F12 e atalhos de inspeção
-            if (e.keyCode === 123 || (e.ctrlKey && [67, 85, 83, 73].includes(e.keyCode))) {
-                e.preventDefault();
-            }
-        });
-
-        document.getElementById('input-puzzle').focus();
     </script>
+
 </body>
 </html>

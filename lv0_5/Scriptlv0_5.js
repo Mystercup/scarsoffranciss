@@ -33,7 +33,7 @@ let sequenciaDigitada = "";
 const DATABASE_NIVEIS = {
     'senha3': '3ntr0pi4', 
     'senha4': 'Belico',
-    'senha5': 'adsdsdsdsdggblkjfnaeghfb',
+    'senha5': 'CTLST',
     'senha6': 'adsdsdsdsdggblkjfnaeghfb',
     'senha7': 'adsdsdsdsdggblkjfnaeghfb',
     'senha8': 'adsdsdsdsdggblkjfnaeghfb',
@@ -87,7 +87,7 @@ function fecharModal() {
 
 function confirmarSenha() {
     const senhaDigitada = document.getElementById("input-modal").value;
-    if (senhaDigitada === senhaNecessariaGlobal) {
+    if (senhaDigitada.toLowerCase() === senhaNecessariaGlobal.toLowerCase()) {
         mostrarFalaCaotica("? - Que a verdade abra seus olhos");
         sessionStorage.setItem("autorizacao_hub_lv0_5", "true");
         setTimeout(() => { window.location.href = paginaDestinoGlobal; }, 2500);

@@ -2,10 +2,9 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Irracionalidade</title>
+    <title>O Tempo Esgota</title>
     <link rel="stylesheet" href="stylelv5.css">
     <script>
-        // Bloqueio de acesso direto
         if (sessionStorage.getItem("autorizacao_hub_lv0_5") !== "true") {
             window.location.replace("../lv0_5/access_level_0_5.html");
         }
@@ -13,40 +12,52 @@
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 
-    <audio id="bg-music" loop>
+    <audio id="bg-music" loop preload="auto">
         <source src="../music/Aylexmusic.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="container-central">
-        <div class="input-wrapper">
-            <p class="instrucao">A voz da razão emudece aqui.</p>
-            <input type="text" id="input-puzzle" autocomplete="off" placeholder="...">
-        </div>
+    <div class="caixa-contador">
+        <div id="status-txt" class="titulo-contador">PROCESSO TRAVADO POR:</div>
+        <div id="timer">00:00:00:00</div>
+        <div id="msg" class="mensagem-final">PROCESSO LIBERADO</div>
     </div>
 
+    <script src="scriptlv5.js"></script>
     <script>
-        const musica = document.getElementById('bg-music');
-        
-        const iniciarInteracao = () => {
-            if (musica) {
-                musica.volume = 0.3;
-                musica.play().catch(() => {});
-            }
-            window.removeEventListener('click', iniciarInteracao);
-            window.removeEventListener('keydown', iniciarInteracao);
-        };
+        (function() {
+            const body = document.body;
+            const musica = document.getElementById('bg-music');
 
-        window.addEventListener('click', iniciarInteracao);
-        window.addEventListener('keydown', iniciarInteracao);
+            document.fonts.ready.then(() => {
+                body.classList.add('sistema-pronto');
+            });
 
-        document.addEventListener('keydown', (e) => {
-            // Bloquear F12 e atalhos de inspeção
-            if (e.keyCode === 123 || (e.ctrlKey && [67, 85, 83, 73].includes(e.keyCode))) {
-                e.preventDefault();
-            }
-        });
+            setTimeout(() => {
+                if (!body.classList.contains('sistema-pronto')) {
+                    body.classList.add('sistema-pronto');
+                }
+            }, 2000);
 
-        document.getElementById('input-puzzle').focus();
+            const iniciarAudio = () => {
+                if (musica) {
+                    musica.volume = 0.3;
+                    musica.play().catch(() => {});
+                }
+                window.removeEventListener('click', iniciarAudio);
+                window.removeEventListener('mousemove', iniciarAudio);
+                window.removeEventListener('keydown', iniciarAudio);
+            };
+
+            window.addEventListener('click', iniciarAudio);
+            window.addEventListener('mousemove', iniciarAudio);
+            window.addEventListener('keydown', iniciarAudio);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.keyCode === 123 || (e.ctrlKey && [67, 85, 83, 73].includes(e.keyCode))) {
+                    e.preventDefault();
+                }
+            });
+        })();
     </script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-// --- CONFIGURAÇÕES DE COMANDOS ---
 const COMANDOS = {
     "HELP": "COMANDOS: STATUS, REBOOT, LOGS, DECODE, WHOAMI, CLEAR, JCPM, BYPASS, YELLOW, MAP, ACESS",
     "STATUS": "SISTEMA INSTÁVEL. NÚCLEO 0124 NÃO RESPONDE.",
@@ -78,8 +77,6 @@ input.addEventListener('keydown', function(e) {
 });
 
 window.onload = iniciarSistema;
-
-// Bloqueios de segurança
 document.addEventListener('contextmenu', e => e.preventDefault());
 document.addEventListener('keydown', e => {
     if (e.key === 'F12' || (e.ctrlKey && (e.key === 'u' || e.key === 'i'))) {

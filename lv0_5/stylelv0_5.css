@@ -12,7 +12,6 @@ body {
     -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
 }
 
-/* CONTAINER DE FEEDBACK */
 #feedback-tradutor {
     height: 80px; display: flex; flex-direction: column;
     justify-content: center; align-items: center; margin-bottom: 10px;
@@ -27,7 +26,6 @@ body {
     font-size: 16px; font-style: italic; margin-top: 5px; height: 20px; 
 }
 
-/* TECLADO TRADUTOR */
 .tradutor-topo { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 700px; margin-bottom: 30px; }
 
 .btn-runa {
@@ -37,7 +35,6 @@ body {
 }
 .btn-runa:hover { border-color: #FFD700; background: rgba(255, 215, 0, 0.05); }
 
-/* TITULOS E BOTÕES */
 .titulo { font-family: 'MinecraftEnchant'; color: #FFD700; font-size: 36px; text-shadow: 0 0 10px #FFD700; margin-bottom: 30px; animation: pulsar 5s infinite ease-in-out; }
 
 @keyframes pulsar {
@@ -50,7 +47,6 @@ body {
 .botoes-container button { font-family: 'MinecraftEnchant'; font-size: 18px; padding: 15px; background-color: #0a0a0a; color: #FFD700; border: 1px solid #333; cursor: pointer; border-radius: 3px; transition: all 0.2s; }
 .botoes-container button:hover { background-color: #111; color: #fff; border-color: #FFD700; }
 
-/* ESTILO DO ERRO (LETRAS INDEPENDENTES EM MC.TTF) */
 .erro-container-aleatorio {
     position: fixed; z-index: 10000; pointer-events: none;
     white-space: nowrap; display: flex;
