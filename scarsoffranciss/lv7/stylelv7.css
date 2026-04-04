@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.container-central {
+    text-align: center;
+}
+
+.instrucao {
+    color: #222;
+    font-size: 14px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: pulsar 3s infinite ease-in-out;
+}
+
+@keyframes pulsar {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.3; }
+}
+
+#input-puzzle {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #1a1a1a;
+    color: #FFD700;
+    font-size: 24px;
+    text-align: center;
+    outline: none;
+    width: 300px;
+    padding: 10px;
+    transition: border-color 0.5s, box-shadow 0.5s;
+}
+
+#input-puzzle:focus {
+    border-bottom-color: #FFD700;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.05);
+}

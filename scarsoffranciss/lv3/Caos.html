@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>O Tempo Esgota</title>
+    <link rel="stylesheet" href="stylelv3.css">
+    <script>
+        if (sessionStorage.getItem("autorizacao_hub_lv0_5") !== "true") {
+            window.location.replace("../lv0_5/access_level_0_5.html");
+        }
+    </script>
+</head>
+<body>
+
+    <audio id="bg-music" loop preload="auto">
+        <source src="../music/Aylexmusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container-caos">
+        <h1 class="texto-topo">Fragmento deteriorado</h1>
+
+        <div class="grid-galeria">
+            
+            <div class="moldura-img"><img src="../images/lv3/X2VsbHVt.jpeg" alt=""></div>    
+            <div class="moldura-img"><img src="../images/lv3/X3hpdGl1bQ==.jpeg" alt=""></div>
+            <div class="moldura-img"><img src="../images/lv3/X2FuZ3Vvcg==.jpeg" alt=""></div>
+            <div class="moldura-img"><img src="../images/lv3/X250ZWxsZWdlbnRpYQ==.jpeg" alt=""></div>
+            <div class="moldura-img"><img src="../images/lv3/X29uc2lsaXVt.jpeg" alt=""></div>
+            <div class="moldura-img"><img src="../images/lv3/X2NjYXN1cw==.jpeg" alt=""></div>
+            
+        </div>
+    </div>
+
+    <div class="caixa-contador">
+        <div id="status-txt" class="titulo-contador">PROCESSO TRAVADO POR:</div>
+        
+        <div id="timer">00:00:00:00</div>
+        
+        <div id="msg-container" class="container-final-msg">
+            <div id="msg" class="mensagem-final">PROTOTIPO LIBERADO</div>
+            <button class="btn-prototipo" id="btn-prototipo-trigger" style="color: #FFD700; border-color: #FFD700;">PORTOTIPO SEMI LIBERADO</button>
+        </div>
+    </div>
+
+    <div id="modal-prototipo" class="modal-imagem" style="display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; z-index: 10001; background-color: rgba(0,0,0,0.95);">
+        <span id="fechar-prototipo" class="fechar-modal" style="position: absolute; top: 20px; right: 30px; cursor: pointer;">&times;</span>
+        <p style="color: #FFD700; font-family: 'MinecraftEnchant', Arial, sans-serif; font-size: 22px; margin-bottom: 20px;">prótotipo sendo preparado para o dialogo</p>
+        <div id="timer-prototipo" style="color: #FFD700; font-family: 'MinecraftEnchant', Arial, sans-serif; font-size: 48px; text-shadow: 0 0 15px #FFD700;">04:00:00:00</div>
+    </div>
+
+    <div id="modal-container" class="modal-imagem">
+        <span id="btn-fechar" class="fechar-modal">&times;</span>
+        <img id="img-popup" src="" alt="">
+    </div>
+
+    <script src="scriptlv3.js"></script>
+
+    <script>
+        (function() {
+            const body = document.body;
+            const musica = document.getElementById('bg-music');
+
+            document.fonts.ready.then(() => {
+                body.classList.add('sistema-pronto');
+            });
+
+            setTimeout(() => {
+                if (!body.classList.contains('sistema-pronto')) {
+                    body.classList.add('sistema-pronto');
+                }
+            }, 2000);
+
+            const iniciarAudio = () => {
+                if (musica) {
+                    musica.volume = 0.3;
+                    musica.play().catch(() => {});
+                }
+                window.removeEventListener('click', iniciarAudio);
+                window.removeEventListener('mousemove', iniciarAudio);
+                window.removeEventListener('keydown', iniciarAudio);
+            };
+
+            window.addEventListener('click', iniciarAudio);
+            window.addEventListener('mousemove', iniciarAudio);
+            window.addEventListener('keydown', iniciarAudio);
+
+        })();
+
+        // Slime era uma criatura criada unicamente para ser uma arma biologica, manipulavel e utilizada para combate, visto o
+        // o que sebastion me falou durante nossas breves conversas, Slime consguiu escapar após algo acontecer dentro do laboratorio
+        // Slime aprendeu a ser da forma que é devido ao leque de informações fornecidas para ela durante
+        // O tempo que permaceu em elidria
+        // ainda hoje é possivel encontrala por aqui
+        // porem seu poder de ação se tornou bastante reduzido após o incidente no qual envolveu ela e Violet
+        // Nos estamos sendo vigiados por um pecado da humanidade que não pode agir sobre nós
+        // Isso deveria ser assustador , mas é bastante curioso, como uma presença tão enigmatica e caotica
+        // foi reduzida a pequenas porções e que hoje, não pode mais nem mesmo falar, sem a ajuda desses aperelhos da minha maquina
+        // eu tenho bastante para testar e conversar com você, slime, talvez tenhamos até como te fazer menos caotica
+        // mas enquanto eu estiver vivo, vou manter esse seu pequeno fragmente engarrafado aqui.
+
+    </script>
+    
+</body>
+</html>
+

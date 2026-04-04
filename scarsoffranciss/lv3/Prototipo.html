@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Protótipo de Interação</title>
+    <link rel="stylesheet" href="styleprototipo.css">
+</head>
+<body onselectstart="return false;" ondragstart="return false;">
+
+    <audio id="bg-music" loop preload="auto">
+        <source src="../music/Aylexmusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="som-gatilho" preload="auto"></audio>
+
+    <div class="container-prototipo">
+        <h1 class="texto-topo">Interface de Comunicação</h1>
+        
+        <div class="caixa-chat">
+            <div id="audio-status-icon" class="audio-status">
+                <!-- Ícone Mudo (X) -->
+                <svg id="svg-muted" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"></path><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+                <!-- Ícone Tocando (Ondas/Tracinhos) -->
+                <svg id="svg-playing" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            </div>
+
+            <div id="status-sistema" class="status-sistema">CONEXÃO ESTÁVEL // AGUARDANDO...</div>
+            
+            <div id="chat-logs" class="chat-logs">
+            </div>
+
+            <div class="input-area">
+                <span class="prompt">>></span>
+                <input type="text" id="chat-input" placeholder="Diga algo..." autofocus autocomplete="off">
+            </div>
+        </div>
+    </div>
+
+    <script src="scriptprototipo.js"></script>
+
+</body>
+</html>
